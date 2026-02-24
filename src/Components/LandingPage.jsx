@@ -444,10 +444,10 @@ const LandingPage = () => {
                               }}
                             >
                               <span style={{ display: 'block', textAlign: 'center' }}>
-                                {'{ }'}
+                                Delivering
                               </span>
                               <span style={{ display: 'block', fontSize: '1.5rem', marginTop: '16px', fontWeight: '300' }}>
-                                react
+                                Vision
                               </span>
                             </motion.div>
                           </div>

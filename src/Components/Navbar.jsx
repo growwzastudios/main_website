@@ -72,32 +72,21 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link
-            to="/"
-            className="flex items-baseline group"
-            aria-label="Homepage"
-          >
-            <span 
-              className="text-3xl font-light transition-colors"
-              style={{ 
-                color: colors.stone[800],
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.color = colors.stone[600]}
-              onMouseLeave={(e) => e.currentTarget.style.color = colors.stone[800]}
-            >
-              Prestige
-            </span>
-            <span 
-              className="text-4xl font-medium ml-0.5 transition-colors"
-              style={{ 
-                color: colors.gold[400],
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.color = colors.gold[500]}
-              onMouseLeave={(e) => e.currentTarget.style.color = colors.gold[400]}
-            >
-              .
-            </span>
-          </Link>
+<Link
+  to="/"
+  className="flex items-center"
+  aria-label="Homepage"
+>
+  <img 
+    src="/logo2.png" 
+    alt="Prestige" 
+    style={{
+      height: '60px',
+      width: '180px',
+      objectFit: 'contain',
+    }}
+  />
+</Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:block" aria-label="Main navigation">
