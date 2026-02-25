@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, TrendingUp, Users, Award } from 'lucide-react';
+import ServicesLanding from './LandingPageBelow';
 
 const LandingPage = () => {
   // Custom color palette
@@ -444,10 +445,10 @@ const LandingPage = () => {
                               }}
                             >
                               <span style={{ display: 'block', textAlign: 'center' }}>
-                                Delivering
+                                We
                               </span>
                               <span style={{ display: 'block', fontSize: '1.5rem', marginTop: '16px', fontWeight: '300' }}>
-                                Vision
+                                Just
                               </span>
                             </motion.div>
                           </div>
@@ -554,7 +555,7 @@ const LandingPage = () => {
           <ArrowRight size={24} />
         </motion.button>
       </motion.div>
-
+<ServicesLanding className="mt-60"/>
       {/* Add Inter font */}
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
     </main>

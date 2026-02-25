@@ -166,6 +166,7 @@ const Footer = () => {
       {/* Main Footer Content */}
       <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '60px 30px 40px' }}>
         {/* Connect With Us Section */}
+        
         <motion.div
           initial="initial"
           whileInView="animate"

@@ -9,8 +9,8 @@ const Navbar = () => {
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
-    { name: 'Portfolio', href: '/portfolio' },
-    { name: 'Team', href: '/team' },
+    // { name: 'Portfolio', href: '/portfolio' },
+    // { name: 'Team', href: '/team' },
     { name: 'Contact', href: '/contact' },
     { name: 'Blogs', href: '/blogs' },
   ];
@@ -79,7 +79,7 @@ const Navbar = () => {
 >
   <img 
     src="/logo2.png" 
-    alt="Prestige" 
+    alt="GrowwZa Studios Logo" 
     style={{
       height: '60px',
       width: '180px',
