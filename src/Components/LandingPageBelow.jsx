@@ -7,6 +7,7 @@ import {
   Camera, BarChart, Briefcase, Rocket, Heart, Zap,
   ChevronLeft, ChevronRight as ChevronRightIcon
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const ServicesLanding = () => {
   // Custom color palette
@@ -647,7 +648,7 @@ const ServicesLanding = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <motion.button
+            {/* <motion.button
               style={{
                 padding: '16px 40px',
                 background: 'transparent',
@@ -665,7 +666,7 @@ const ServicesLanding = () => {
               whileTap={{ scale: 0.95 }}
             >
               View All Projects <ChevronRight size={18} />
-            </motion.button>
+            </motion.button> */}
           </motion.div>
         </div>
       </section>
@@ -975,6 +976,8 @@ const ServicesLanding = () => {
               justifyContent: 'center',
               flexWrap: 'wrap',
             }}>
+             <Link to="/contact" style={{ textDecoration: 'none' }}>
+            
               <motion.button
                 style={{
                   padding: '18px 45px',
@@ -995,6 +998,9 @@ const ServicesLanding = () => {
               >
                 Start a Project <Rocket size={18} />
               </motion.button>
+ </Link> 
+
+ <Link to="/contact" style={{ textDecoration: 'none' }}>
 
               <motion.button
                 style={{
@@ -1015,6 +1021,7 @@ const ServicesLanding = () => {
               >
                 Contact Us <MessageCircle size={18} />
               </motion.button>
+               </Link>
             </motion.div>
 
             {/* <motion.div variants={fadeInUp} style={{

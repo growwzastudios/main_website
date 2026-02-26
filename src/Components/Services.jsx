@@ -6,6 +6,7 @@ import {
   Sparkles, ArrowRight, CheckCircle, Rocket, Heart, Eye,
   Target, BarChart, Camera, MessageCircle, Briefcase, Crown
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const PremiumServicesPage = () => {
   // Custom color palette
@@ -240,14 +241,14 @@ const PremiumServicesPage = () => {
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
       {/* Hero Section */}
-      <section style={{
+      {/* <section style={{
         padding: '100px 20px 60px',
         background: `linear-gradient(135deg, ${colors.beige[100]} 0%, ${colors.beige[50]} 100%)`,
         position: 'relative',
         overflow: 'hidden',
-      }}>
+      }}> */}
         {/* Decorative elements */}
-        <motion.div
+        {/* <motion.div
           style={{
             position: 'absolute',
             top: '10%',
@@ -268,17 +269,17 @@ const PremiumServicesPage = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-        />
+        /> */}
 
-        <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        {/* <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
             variants={staggerContainer}
             style={{ textAlign: 'center' }}
-          >
-            <motion.div variants={fadeInUp} style={{ marginBottom: '20px' }}>
+          > */}
+            {/* <motion.div variants={fadeInUp} style={{ marginBottom: '20px' }}>
               <span style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -293,9 +294,9 @@ const PremiumServicesPage = () => {
                 <Sparkles size={16} />
                 Premium Digital Solutions
               </span>
-            </motion.div>
+            </motion.div> */}
 
-            <motion.h1 variants={fadeInUp} style={{
+            {/* <motion.h1 variants={fadeInUp} style={{
               fontSize: 'clamp(2.5rem, 8vw, 4rem)',
               fontWeight: '300',
               color: colors.stone[800],
@@ -306,9 +307,9 @@ const PremiumServicesPage = () => {
               <span style={{ display: 'block', fontWeight: '500', color: colors.gold[600] }}>
                 Across Every Dimension
               </span>
-            </motion.h1>
+            </motion.h1> */}
 
-            <motion.p variants={fadeInUp} style={{
+            {/* <motion.p variants={fadeInUp} style={{
               fontSize: '1.2rem',
               color: colors.stone[600],
               maxWidth: '800px',
@@ -317,10 +318,10 @@ const PremiumServicesPage = () => {
             }}>
               From stunning websites to powerful mobile apps, we create digital experiences 
               that drive growth, engage audiences, and build lasting brand value.
-            </motion.p>
+            </motion.p> */}
 
             {/* Stats Row */}
-            <motion.div
+            {/* <motion.div
               variants={fadeInUp}
               style={{
                 display: 'flex',
@@ -342,13 +343,13 @@ const PremiumServicesPage = () => {
                   <div style={{ fontSize: '0.9rem', color: colors.stone[500] }}>{stat.label}</div>
                 </motion.div>
               ))}
-            </motion.div>
-          </motion.div>
+            </motion.div> */}
+          {/* </motion.div>
         </div>
-      </section>
+      </section>  */}
 
       {/* Stats Grid */}
-      <section style={{ padding: '40px 20px' }}>
+      {/* <section style={{ padding: '40px 20px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <motion.div
             initial="initial"
@@ -384,10 +385,13 @@ const PremiumServicesPage = () => {
             ))}
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Services Grid */}
-      <section style={{ padding: '60px 20px' }}>
+      <section style={{ padding: '100px 20px 60px',
+        background: `linear-gradient(135deg, ${colors.beige[100]} 0%, ${colors.beige[50]} 100%)`,
+        position: 'relative',
+        overflow: 'hidden' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <motion.div
             initial="initial"
@@ -693,6 +697,8 @@ const PremiumServicesPage = () => {
           </motion.p>
 
           <motion.div variants={fadeInUp}>
+            <Link to="/contact" style={{ textDecoration: 'none' }}>
+           
             <motion.button
               style={{
                 padding: '18px 50px',
@@ -712,7 +718,7 @@ const PremiumServicesPage = () => {
               whileTap={{ scale: 0.95 }}
             >
               Start Your Journey <ArrowRight size={20} />
-            </motion.button>
+            </motion.button> </Link>
           </motion.div>
         </motion.div>
       </section>

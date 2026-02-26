@@ -51,7 +51,7 @@ const Navbar = () => {
     <header
       className="fixed top-0 left-0 w-full z-50 transition-all duration-300"
       style={{
-        backgroundColor: scrolled ? `${colors.beige[100]}f2` : `${colors.beige[50]}e6`,
+        backgroundColor: scrolled ? `${colors.beige[50]}f2` : `${colors.beige[50]}e6`,
         backdropFilter: 'blur(8px)',
         boxShadow: scrolled ? '0 10px 30px -10px rgba(0, 0, 0, 0.1)' : 'none',
       }}
@@ -84,6 +84,7 @@ const Navbar = () => {
       height: '60px',
       width: '180px',
       objectFit: 'contain',
+      filter: 'sepia(20%) brightness(100%) saturate(90%)',
     }}
   />
 </Link>

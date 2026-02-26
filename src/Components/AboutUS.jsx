@@ -6,6 +6,7 @@ import {
   TrendingUp, Shield, Zap, Coffee, Github, Linkedin,
   Mail, ChevronRight, Quote, Sparkles
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const AboutUsPage = () => {
   // Custom color palette
@@ -387,7 +388,7 @@ const AboutUsPage = () => {
             variants={staggerContainer}
             style={{ textAlign: 'center' }}
           >
-            <motion.div variants={fadeInUp} style={{ marginBottom: '20px' }}>
+            {/* <motion.div variants={fadeInUp} style={{ marginBottom: '20px' }}>
               <span style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -402,7 +403,7 @@ const AboutUsPage = () => {
                 <Sparkles size={16} />
                 Our Story
               </span>
-            </motion.div>
+            </motion.div> */}
 
             <motion.h1 variants={fadeInUp} style={{
               fontSize: 'clamp(2.5rem, 8vw, 4rem)',
@@ -624,83 +625,7 @@ const AboutUsPage = () => {
         </div>
       </section>
 
-      {/* World Map Section */}
-      <section style={{ padding: '60px 20px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            style={{ textAlign: 'center', marginBottom: '40px' }}
-          >
-            <motion.h2 variants={fadeInUp} style={{
-              fontSize: 'clamp(2rem, 6vw, 2.8rem)',
-              fontWeight: '300',
-              color: colors.stone[800],
-              marginBottom: '16px',
-            }}>
-              Global <span style={{ fontWeight: '500', color: colors.gold[600] }}>Reach</span>
-            </motion.h2>
-            <motion.p variants={fadeInUp} style={{
-              fontSize: '1.1rem',
-              color: colors.stone[600],
-              maxWidth: '600px',
-              margin: '0 auto',
-            }}>
-              Proudly serving clients across 15+ countries worldwide
-            </motion.p>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            style={{
-              background: 'white',
-              borderRadius: '30px',
-              padding: '30px',
-              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.05)',
-              border: `1px solid ${colors.stone[200]}`,
-            }}
-          >
-             <img 
-    src="/world.svg" 
-    alt="GrowwZa Studios Logo" 
-    style={{
-      height: '390px',
-      width: '980px',
-      objectFit: 'contain',
-    }}
-  />
-            {/* <WorldMap /> */}
-            
-            <div style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              gap: '30px',
-              marginTop: '30px',
-            }}>
-              {['North America', 'South America', 'Europe', 'Asia', 'Australia'].map((region, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ y: -5 }}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                  }}
-                >
-                  <MapPin size={16} color={colors.gold[400]} />
-                  <span style={{ color: colors.stone[600], fontSize: '0.95rem' }}>{region}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Mission & Vision Section */}
       <section style={{ padding: '60px 20px', background: colors.beige[100] }}>
@@ -1006,6 +931,83 @@ const AboutUsPage = () => {
           </motion.div>
         </div>
       </section>
+      {/* World Map Section */}
+      <section style={{ padding: '60px 20px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            style={{ textAlign: 'center', marginBottom: '40px' }}
+          >
+            <motion.h2 variants={fadeInUp} style={{
+              fontSize: 'clamp(2rem, 6vw, 2.8rem)',
+              fontWeight: '300',
+              color: colors.stone[800],
+              marginBottom: '16px',
+            }}>
+              Global <span style={{ fontWeight: '500', color: colors.gold[600] }}>Reach</span>
+            </motion.h2>
+            <motion.p variants={fadeInUp} style={{
+              fontSize: '1.1rem',
+              color: colors.stone[600],
+              maxWidth: '600px',
+              margin: '0 auto',
+            }}>
+              Proudly serving clients across 15+ countries worldwide
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            style={{
+              background: 'white',
+              borderRadius: '30px',
+              padding: '30px',
+              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.05)',
+              border: `1px solid ${colors.stone[200]}`,
+            }}
+          >
+             <img 
+    src="/world.svg" 
+    alt="GrowwZa Studios Logo" 
+    style={{
+      height: '390px',
+      width: '980px',
+      objectFit: 'contain',
+    }}
+  />
+            {/* <WorldMap /> */}
+            
+            <div style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              gap: '30px',
+              marginTop: '30px',
+            }}>
+              {['North America', 'South America', 'Europe', 'Asia', 'Australia'].map((region, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ y: -5 }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                  }}
+                >
+                  <MapPin size={16} color={colors.gold[400]} />
+                  <span style={{ color: colors.stone[600], fontSize: '0.95rem' }}>{region}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Call to Action Section */}
       <section style={{
@@ -1042,6 +1044,8 @@ const AboutUsPage = () => {
           </motion.p>
 
           <motion.div variants={fadeInUp}>
+            <Link to="/contact" style={{ textDecoration: 'none' }}>
+        
             <motion.button
               style={{
                 padding: '18px 50px',
@@ -1061,7 +1065,7 @@ const AboutUsPage = () => {
               whileTap={{ scale: 0.95 }}
             >
               Get In Touch <ChevronRight size={20} />
-            </motion.button>
+            </motion.button>    </Link>
           </motion.div>
         </motion.div>
       </section>
