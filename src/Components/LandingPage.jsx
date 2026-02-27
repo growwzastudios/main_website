@@ -349,8 +349,8 @@ const LandingPage = () => {
                 >
                   {[
                     { icon: TrendingUp, value: '98%', label: 'Success Rate' },
-                    { icon: Users, value: '500+', label: 'Happy Clients' },
-                    { icon: Award, value: '15+', label: 'Years Excellence' },
+                    { icon: Users, value: '15+', label: 'Happy Clients' },
+                    { icon: Award, value: '1.5+', label: 'Years Excellence' },
                   ].map((stat, index) => (
                     <motion.div
                       key={index}
@@ -391,6 +391,7 @@ const LandingPage = () => {
                     gap: '12px',
                     width: '100%'
                   }}>
+                    <Link to="/contact">
                     <motion.button
                       style={{
                         padding: '14px 28px',
@@ -408,6 +409,7 @@ const LandingPage = () => {
                     >
                       Start Your Journey
                     </motion.button>
+</Link>
                     <motion.button
                       style={{
                         padding: '14px 28px',

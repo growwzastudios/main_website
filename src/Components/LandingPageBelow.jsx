@@ -43,57 +43,43 @@ const ServicesLanding = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Johnson",
-      role: "CEO, TechStart",
+      name: "Praduman Karol",
+      role: "Owner,On The go burger",
       content: "They transformed our online presence completely. The team's attention to detail and creative approach resulted in a 150% increase in conversions.",
       rating: 5,
-      image: "👩‍💼",
-      company: "TechStart"
+      image:"👨‍💼"
     },
-    {
+      {
       id: 2,
-      name: "Michael Chen",
-      role: "Marketing Director",
-      content: "The most dedicated professionals I've worked with. Their SEO strategy doubled our organic traffic in just 3 months. Highly recommended!",
+      name: "Kamal Sharma",
+      role: "Owner,Kurti and More",
+      content: "Their branding work is exceptional. They captured our essence perfectly and created a identity that resonates with our audience.",
       rating: 5,
-      image: "👨‍💼",
-      company: "GrowthLabs"
+      image:"👨‍💼"
     },
     {
       id: 3,
-      name: "Emily Rodriguez",
-      role: "Founder, CreativeCo",
-      content: "They didn't just design a website; they created an experience. Our customers love the new platform, and sales have never been better.",
+      name: "Usha Ji",
+      role: "Owner,Ghar ki Rasoi",
+      content: "They didn’t just design visuals; they crafted an experience. The new menu and graphics elevate our brand, delight our customers, and have boosted engagement like never before.",
       rating: 5,
-      image: "👩‍🎨",
-      company: "CreativeCo"
+      image:"👨‍💼"
     },
     {
       id: 4,
-      name: "David Kim",
-      role: "Product Manager",
-      content: "Outstanding mobile app development. They understood our vision perfectly and delivered beyond expectations. True partners in innovation.",
+      name: "Sanjay Mehta",
+      role: "Gym Trainer & Fitness Influencer",
+      content: "I’m really impressed with the portfolio design. It doesn’t just show workouts and achievements—it tells a story. The layout highlights the trainer’s journey, inspires confidence, and makes the brand feel truly professional.",
       rating: 5,
-      image: "👨‍💻",
-      company: "InnovateLab"
+      image:"👨‍💼"
     },
     {
       id: 5,
-      name: "Lisa Thompson",
-      role: "Brand Director",
-      content: "Their branding work is exceptional. They captured our essence perfectly and created a identity that resonates with our audience.",
+      name: "Saurabh Sharma",
+      role: "",
+      content: "The most dedicated professionals I've worked with. Their SEO strategy doubled our organic traffic in just 3 months. Highly recommended!",
       rating: 5,
-      image: "👩‍🎤",
-      company: "FashionHub"
-    },
-    {
-      id: 6,
-      name: "James Wilson",
-      role: "Startup Founder",
-      content: "From concept to launch, they were with us every step. Our app has 5-star ratings and users love the experience they created.",
-      rating: 5,
-      image: "👨‍🚀",
-      company: "TechFlow"
+      image:"👨‍💼"
     }
   ];
 
@@ -516,7 +502,7 @@ const ServicesLanding = () => {
                   ))}
                 </div>
 
-                <motion.a
+                {/* <motion.a
                   href={service.link}
                   style={{
                     display: 'inline-flex',
@@ -530,7 +516,7 @@ const ServicesLanding = () => {
                   whileHover={{ x: 5 }}
                 >
                   Read more <ArrowRight size={16} />
-                </motion.a>
+                </motion.a> */}
               </motion.article>
             ))}
           </motion.div>
@@ -851,7 +837,7 @@ const ServicesLanding = () => {
                         fontSize: '0.95rem',
                         color: colors.stone[500],
                       }}>
-                        {testimonials[currentIndex].role} · {testimonials[currentIndex].company}
+                        {testimonials[currentIndex].role} {testimonials[currentIndex].company}
                       </p>
                     </div>
                   </div>

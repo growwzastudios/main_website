@@ -85,33 +85,33 @@ const AboutUsPage = () => {
   // Journey timeline data
   const journeyData = [
     {
-      year: "2015",
+      year: "August 2024",
       title: "The Beginning",
       description: "Started with a small team of 3 passionate developers in Jaipur",
       icon: <Rocket size={24} />,
     },
     {
-      year: "2017",
+      year: "February 2025",
       title: "First Milestone",
-      description: "Completed 100+ projects and expanded to 15 team members",
+      description: "Completed 5+ projects and expanded to 5 team members",
       icon: <Award size={24} />,
     },
+    // {
+    //   year: "2019",
+    //   title: "Global Reach",
+    //   description: "Started serving international clients from USA, UK, and Australia",
+    //   icon: <Globe size={24} />,
+    // },
+    // {
+    //   year: "2021",
+    //   title: "Innovation Hub",
+    //   description: "Launched our own products and innovation lab",
+    //   icon: <Zap size={24} />,
+    // },
     {
-      year: "2019",
-      title: "Global Reach",
-      description: "Started serving international clients from USA, UK, and Australia",
-      icon: <Globe size={24} />,
-    },
-    {
-      year: "2021",
-      title: "Innovation Hub",
-      description: "Launched our own products and innovation lab",
-      icon: <Zap size={24} />,
-    },
-    {
-      year: "2023",
+      year: "December 2025",
       title: " Excellence",
-      description: "Recognized as top web development company with 500+ successful projects",
+      description: "Recognized as top web development company with 15+ successful projects",
       icon: <Star size={24} />,
     },
   ];
@@ -119,40 +119,40 @@ const AboutUsPage = () => {
   // Team members data
   const teamMembers = [
     {
-      name: "Alex Morgan",
-      role: "Founder & CEO",
-      bio: "Visionary leader with 15+ years of experience in digital transformation",
+      name: "Kabir Maheswari",
+      role: "Founder",
+      bio: "Visionary leader with 1.5+ years of experience in digital transformation",
       image: "👨‍💼",
       social: { github: "#", linkedin: "#", mail: "#" },
     },
     {
-      name: "Sarah Chen",
-      role: "Creative Director",
-      bio: "Award-winning designer passionate about creating meaningful experiences",
+      name: "Piyush Khandelwal",
+      role: "Developer",
+      bio: "Award-winning designer and developer passionate about creating meaningful experiences",
       image: "👩‍🎨",
       social: { github: "#", linkedin: "#", mail: "#" },
     },
     {
-      name: "Michael Patel",
+      name: "Anirudh Patel",
       role: "Technical Lead",
       bio: "Full-stack expert specializing in scalable web applications",
       image: "👨‍💻",
       social: { github: "#", linkedin: "#", mail: "#" },
     },
     {
-      name: "Emma Williams",
+      name: "Tez Pratap Singh",
       role: "Marketing Strategist",
       bio: "Digital marketing guru with proven track record in growth hacking",
       image: "👩‍💼",
       social: { github: "#", linkedin: "#", mail: "#" },
     },
-    {
-      name: "David Kumar",
-      role: "Lead Developer",
-      bio: "Mobile app specialist with expertise in cross-platform development",
-      image: "👨‍🔧",
-      social: { github: "#", linkedin: "#", mail: "#" },
-    },
+    // {
+    //   name: "David Kumar",
+    //   role: "Lead Developer",
+    //   bio: "Mobile app specialist with expertise in cross-platform development",
+    //   image: "👨‍🔧",
+    //   social: { github: "#", linkedin: "#", mail: "#" },
+    // },
     {
       name: "Priya Singh",
       role: "UX Researcher",
@@ -164,10 +164,10 @@ const AboutUsPage = () => {
 
   // Stats data
   const statsData = [
-    { value: "500+", label: "Projects Completed", icon: <Briefcase size={24} /> },
-    { value: "50+", label: "Team Members", icon: <Users size={24} /> },
+    { value: "15+", label: "Projects Completed", icon: <Briefcase size={24} /> },
+    { value: "5+", label: "Team Members", icon: <Users size={24} /> },
     { value: "15+", label: "Countries Served", icon: <Globe size={24} /> },
-    { value: "8+", label: "Years Excellence", icon: <Calendar size={24} /> },
+    { value: "1.5+", label: "Years Excellence", icon: <Calendar size={24} /> },
   ];
 
   // Values data
@@ -414,7 +414,7 @@ const AboutUsPage = () => {
             }}>
               Crafting Digital
               <span style={{ display: 'block', fontWeight: '500', color: colors.gold[600] }}>
-                Excellence Since 2015
+                Excellence Since 2024
               </span>
             </motion.h1>
 
