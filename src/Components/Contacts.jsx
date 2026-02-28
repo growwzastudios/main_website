@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Mail, Phone, MapPin, Send, MessageCircle, Clock, 
@@ -6,8 +6,10 @@ import {
   Twitter, Facebook, Instagram, Linkedin, Youtube,
   Headphones, Calendar, Award, Heart, Sparkles, Star
 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const PremiumContactPage = () => {
+  const form = useRef();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -102,23 +104,23 @@ const PremiumContactPage = () => {
     {
       icon: <Phone size={isMobile ? 20 : 24} />,
       title: "Phone",
-      details: ["+91 123 456 7890", "+91 987 654 3210"],
+      details: ["+91 9358254199"],
       action: "Call us now",
-      link: "tel:+911234567890",
+      link: "tel:+919358254199",
       color: colors.gold[400],
     },
     {
       icon: <Mail size={isMobile ? 20 : 24} />,
       title: "Email",
-      details: ["hello@prestige.com", "support@prestige.com"],
+      details: ["growwzastudios@gmail.com", "growwzastudios@zohomail.in"],
       action: "Send message",
-      link: "mailto:hello@prestige.com",
+      link: "mailto:growwzastudios@gmail.com",
       color: colors.gold[500],
     },
     {
       icon: <MapPin size={isMobile ? 20 : 24} />,
       title: "Visit Us",
-      details: ["123 Business Avenue", "Jaipur, Rajasthan 302001"],
+      details: ["Sunder Nagar - A", "Jaipur, Rajasthan 302019"],
       action: "Get directions",
       link: "#",
       color: colors.gold[600],
@@ -148,7 +150,7 @@ const PremiumContactPage = () => {
 
   // Team members for quick contact
   const teamContacts = [
-    { name: "Kabir Maheshwari", role: "Client Relations", image: "👩‍💼", phone: "+91 98765 43210", email: "kabirmaheshwari@gmail.com" },
+    { name: "Kabir M", role: "Client Relations", image: "👩‍💼", phone: "+91 9358254199", email: "kabirmaheshwari@gmail.com" },
   ];
 
   // FAQ data
@@ -176,13 +178,38 @@ const PremiumContactPage = () => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormStatus({ submitted: true, success: true, message: "Message sent successfully! We'll get back to you soon." });
     
-    // Reset form after 3 seconds
+    // Change these to your actual IDs from EmailJS dashboard
+    const SERVICE_ID = 'service_e8yl7hx'; 
+    const TEMPLATE_ID = 'template_zgyh6gu';
+    const PUBLIC_KEY = 'PgAFmy-aMr58umIE5';
+
+    // Set loading state (optional, but good for UX)
+    setFormStatus({ submitted: true, success: false, message: "Sending..." });
+
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+      .then((result) => {
+        setFormStatus({ 
+          submitted: true, 
+          success: true, 
+          message: "Message sent successfully! We'll get back to you soon." 
+        });
+        
+        // Reset form
+        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      }, (error) => {
+        console.log(error.text);
+        setFormStatus({ 
+          submitted: true, 
+          success: false, 
+          message: "Failed to send message. Please try again later." 
+        });
+      });
+
+    // Clear status message after 5 seconds
     setTimeout(() => {
-      setFormStatus({ submitted: false, success: false, message: '' });
-      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-    }, 3000);
+      setFormStatus(prev => ({ ...prev, submitted: false }));
+    }, 5000);
   };
 
   // Mobile-specific styles
@@ -530,6 +557,7 @@ const PremiumContactPage = () => {
               variants={staggerContainer}
             >
               <motion.form
+              ref={form}
                 variants={fadeInRight}
                 onSubmit={handleSubmit}
                 style={{ width: '100%' }}
@@ -954,7 +982,7 @@ const PremiumContactPage = () => {
       </section>
 
       {/* Map Section */}
-      <section style={mobileStyles.section}>
+      {/* <section style={mobileStyles.section}>
         <div style={mobileStyles.container}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -979,10 +1007,10 @@ const PremiumContactPage = () => {
               overflow: 'hidden',
             }}>
               {/* Placeholder for actual map */}
-              <div style={{ textAlign: 'center', padding: isMobile ? '0 20px' : '0' }}>
+              {/* <div style={{ textAlign: 'center', padding: isMobile ? '0 20px' : '0' }}>
                 <MapPin size={isMobile ? 40 : 48} color={colors.gold[400]} />
                 <p style={{ color: colors.stone[600], marginTop: '10px', fontSize: isMobile ? '0.9rem' : '1rem' }}>
-                  123 Business Avenue, Jaipur, Rajasthan 302001
+                  Sunder Nagar - A, Jaipur, Rajasthan 302019
                 </p>
                 <motion.button
                   whileHover={isMobile ? {} : { scale: 1.05 }}
@@ -1002,8 +1030,8 @@ const PremiumContactPage = () => {
               </div>
             </div>
           </motion.div>
-        </div>
-      </section>
+        </div> */}
+      {/* </section> */} 
 
       {/* CTA Section */}
       <section style={{
@@ -1043,7 +1071,7 @@ const PremiumContactPage = () => {
 
           <motion.div variants={fadeInUp}>
             <motion.a
-              href="mailto:hello@prestige.com"
+              href="mailto:growwzastudios@gmail.com"
               style={{
                 padding: isMobile ? '16px 40px' : '18px 50px',
                 background: colors.gold[400],
@@ -1063,7 +1091,7 @@ const PremiumContactPage = () => {
               whileTap={isMobile ? { scale: 0.95 } : { scale: 0.95 }}
             >
               <Mail size={isMobile ? 18 : 20} />
-              hello@prestige.com
+             growwzastudios@gmail.com
             </motion.a>
           </motion.div>
         </motion.div>

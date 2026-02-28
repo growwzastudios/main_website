@@ -1,15 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, TrendingUp, Users, Award, PhoneCall } from 'lucide-react';
+import { ArrowRight, Sparkles, TrendingUp, Users, Award, PhoneCall, Rocket, Lightbulb, Palette } from 'lucide-react';
 import ServicesLanding from './LandingPageBelow';
 import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   // Custom color palette
   const colors = {
-    beige: {
-      50: '#faf7f2',
-    },
+    beige: { 50: '#faf7f2' },
     gold: {
       100: '#f5ede1',
       200: '#e8d9c4',
@@ -36,567 +34,231 @@ const LandingPage = () => {
     transition: { duration: 0.6, ease: "easeOut" }
   };
 
-  const fadeInLeft = {
-    initial: { opacity: 0, x: -60 },
-    animate: { opacity: 1, x: 0 },
-    transition: { duration: 0.6, ease: "easeOut" }
-  };
-
   const fadeInRight = {
     initial: { opacity: 0, x: 60 },
     animate: { opacity: 1, x: 0 },
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 0.8, ease: "easeOut" }
   };
 
   const staggerContainer = {
-    animate: {
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
+    animate: { transition: { staggerChildren: 0.2 } }
   };
 
   const pulseAnimation = {
     initial: { scale: 1 },
     animate: {
       scale: [1, 1.05, 1],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
+      transition: { duration: 2, repeat: Infinity, ease: "easeInOut" }
     }
   };
 
   return (
     <main 
       style={{ 
-        minHeight: '100vh',
-        backgroundColor: colors.beige[50],
-        overflow: 'hidden',
-        position: 'relative',
-        fontFamily: 'Inter, system-ui, -apple-system, sans-serif'
+        minHeight: '100vh', 
+        backgroundColor: colors.beige[50], 
+        overflow: 'hidden', 
+        position: 'relative', 
+        fontFamily: 'Inter, system-ui, -apple-system, sans-serif' 
       }}
     >
-      {/* Skip link for accessibility */}
-      <a
-        href="#main-content"
-        style={{
-          position: 'absolute',
-          width: '1px',
-          height: '1px',
-          padding: '0',
-          margin: '-1px',
-          overflow: 'hidden',
-          clip: 'rect(0, 0, 0, 0)',
-          whiteSpace: 'nowrap',
-          borderWidth: '0',
-        }}
-        onFocus={(e) => {
-          e.target.style.position = 'absolute';
-          e.target.style.width = 'auto';
-          e.target.style.height = 'auto';
-          e.target.style.padding = '8px 16px';
-          e.target.style.margin = '16px';
-          e.target.style.clip = 'auto';
-          e.target.style.backgroundColor = colors.stone[800];
-          e.target.style.color = colors.beige[50];
-          e.target.style.borderRadius = '6px';
-          e.target.style.zIndex = '50';
-        }}
-        onBlur={(e) => {
-          e.target.style.position = 'absolute';
-          e.target.style.width = '1px';
-          e.target.style.height = '1px';
-          e.target.style.padding = '0';
-          e.target.style.margin = '-1px';
-          e.target.style.clip = 'rect(0, 0, 0, 0)';
-        }}
-      >
-        Skip to main content
-      </a>
+      {/* Background decorative elements */}
+      <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+        <motion.div
+          style={{
+            position: 'absolute', top: '10%', left: '5%', width: '400px', height: '400px',
+            background: `radial-gradient(circle, ${colors.gold[100]} 0%, transparent 70%)`,
+            filter: 'blur(80px)', opacity: 0.6
+          }}
+          animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
 
       {/* Desktop Get in Touch Button */}
       <motion.div
-        style={{
-          position: 'fixed',
-          top: '100px',
-          right: '32px',
-          zIndex: 40,
-          display: 'none',
-        }}
+        style={{ position: 'fixed', top: '100px', right: '32px', zIndex: 40, display: 'none' }}
         className="desktop-button"
         initial={{ opacity: 0, x: 100 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 1, type: "spring", stiffness: 100 }}
+        transition={{ duration: 0.8, delay: 1, type: "spring" }}
       >
-        <style>{`
-          @media (min-width: 768px) {
-            .desktop-button {
-              display: block !important;
-            }
-          }
-        `}</style>
+        <style>{`@media (min-width: 768px) { .desktop-button { display: block !important; } }`}</style>
         <Link to="/contact" style={{ textDecoration: 'none' }}> 
           <motion.button
             style={{
-              position: 'relative',
-              padding: '16px 32px',
-              backgroundColor: colors.gold[400],
-              color: colors.stone[800],
-              borderRadius: '9999px',
-              fontWeight: '500',
-              fontSize: '1.125rem',
-              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-              border: 'none',
-              cursor: 'pointer',
-              overflow: 'hidden',
+              padding: '16px 32px', backgroundColor: colors.gold[400], color: colors.stone[800],
+              borderRadius: '9999px', fontWeight: '600', border: 'none', cursor: 'pointer',
+              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)', display: 'flex', alignItems: 'center', gap: '8px'
             }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             animate={pulseAnimation.animate}
-            transition={pulseAnimation.transition}
           >
-            <span style={{ position: 'relative', zIndex: 10, display: 'flex', alignItems: 'center', gap: '8px' }}>
-              Get in Touch
-              <motion.span
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <PhoneCall size={20} />
-              </motion.span>
-            </span>
-            <motion.div
-              style={{
-                position: 'absolute',
-                inset: 0,
-                backgroundColor: colors.gold[500],
-                zIndex: 1,
-              }}
-              initial={{ x: "100%" }}
-              whileHover={{ x: 0 }}
-              transition={{ duration: 0.3 }}
-            />
+            Get in Touch <PhoneCall size={18} />
           </motion.button>
         </Link>
       </motion.div>
 
-      {/* Main Content */}
-      <div style={{ 
-        position: 'relative', 
-        minHeight: '100vh', 
-        display: 'flex', 
-        alignItems: 'center',
-        paddingTop: '80px',
-      }} id="main-content">
-        
-        {/* Background decorative elements */}
-        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
-          <motion.div
-            style={{
-              position: 'absolute',
-              top: '80px',
-              left: '40px',
-              width: '256px',
-              height: '256px',
-              backgroundColor: 'rgba(232, 217, 196, 0.2)',
-              borderRadius: '9999px',
-              filter: 'blur(64px)',
-            }}
-            animate={{
-              x: [0, 30, 0],
-              y: [0, 20, 0],
-            }}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-          <motion.div
-            style={{
-              position: 'absolute',
-              bottom: '80px',
-              right: '40px',
-              width: '384px',
-              height: '384px',
-              backgroundColor: 'rgba(168, 162, 158, 0.2)',
-              borderRadius: '9999px',
-              filter: 'blur(64px)',
-            }}
-            animate={{
-              x: [0, -30, 0],
-              y: [0, -20, 0],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-        </div>
+      {/* Main Hero Content */}
+      <div style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '40px' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', width: '100%', zIndex: 10 }}>
+          <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '60px', alignItems: 'center' }}>
+            <style>{`@media (min-width: 1024px) { .hero-grid { grid-template-columns: 1.1fr 0.9fr !important; } }`}</style>
 
-        <div style={{ 
-          maxWidth: '1280px', 
-          margin: '0 auto', 
-          padding: '0 20px', 
-          position: 'relative', 
-          zIndex: 10,
-          width: '100%'
-        }}>
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: '1fr', 
-            gap: '32px', 
-            alignItems: 'center' 
-          }}>
-            <style>{`
-              @media (min-width: 1024px) {
-                .landing-grid {
-                  grid-template-columns: 1fr 1fr !important;
-                  gap: 60px !important;
-                }
-              }
-            `}</style>
-            
-            <div className="landing-grid" style={{ 
-              display: 'grid', 
-              gap: '40px',
-            }}>
-              {/* Left side - Content */}
-              <motion.section
-                initial="initial"
-                animate="animate"
-                variants={staggerContainer}
-                style={{ 
-                  textAlign: 'left',
-                  order: 1
+            {/* Left side - Content */}
+            <motion.section initial="initial" animate="animate" variants={staggerContainer}>
+              <motion.div variants={fadeInUp} style={{ marginBottom: '24px' }}>
+                <span style={{
+                  backgroundColor: colors.gold[200], color: colors.stone[700],
+                  padding: '8px 16px', borderRadius: '9999px', fontSize: '0.85rem', fontWeight: '700',
+                  textTransform: 'uppercase', letterSpacing: '1px', display: 'inline-flex', alignItems: 'center', gap: '8px'
+                }}>
+                  <Sparkles size={14} /> The Future of Growth
+                </span>
+              </motion.div>
+
+              <motion.h1 variants={fadeInUp} style={{ 
+                fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', fontWeight: '300', color: colors.stone[800], 
+                lineHeight: 1.1, marginBottom: '24px' 
+              }}>
+                Crafting <span style={{ fontWeight: '700', color: colors.gold[500] }}>Digital</span>
+                <br />Masterpieces
+              </motion.h1>
+
+              <motion.p variants={fadeInUp} style={{ 
+                fontSize: '1.125rem', color: colors.stone[500], marginBottom: '40px', maxWidth: '540px', lineHeight: 1.7 
+              }}>
+                We blend aesthetic design with powerful strategy to scale your business. 
+                Experience a partnership built on transparency and fueled by innovation.
+              </motion.p>
+
+              <motion.div variants={fadeInUp} style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                <Link to="/contact">
+                  <motion.button style={{
+                    padding: '16px 36px', backgroundColor: colors.stone[800], color: 'white',
+                    borderRadius: '12px', fontWeight: '600', border: 'none', cursor: 'pointer'
+                  }} whileHover={{ y: -4, backgroundColor: colors.stone[700] }}>
+                    Start Building
+                  </motion.button>
+                </Link>
+                <motion.button style={{
+                  padding: '16px 36px', backgroundColor: 'transparent', color: colors.stone[800],
+                  borderRadius: '12px', fontWeight: '600', border: `2px solid ${colors.stone[200]}`, cursor: 'pointer'
+                }} whileHover={{ borderColor: colors.gold[400] }}>
+                  View Portfolio
+                </motion.button>
+              </motion.div>
+            </motion.section>
+
+            {/* Right side - The Stunning Animated UI */}
+            <motion.section 
+              initial="initial" animate="animate"
+              style={{ position: 'relative', height: '500px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
+              {/* Dynamic Background Orb */}
+              <motion.div
+                style={{
+                  position: 'absolute', width: '350px', height: '350px',
+                  borderRadius: '50%', background: `linear-gradient(135deg, ${colors.gold[100]} 0%, ${colors.gold[300]} 100%)`,
+                  filter: 'blur(50px)', zIndex: 1
+                }}
+                animate={{ scale: [1, 1.1, 1], rotate: [0, 90, 0] }}
+                transition={{ duration: 10, repeat: Infinity }}
+              />
+
+              {/* Central Glassmorphism Card */}
+              <motion.div
+                variants={fadeInRight}
+                style={{
+                  width: '320px', padding: '32px', borderRadius: '32px',
+                  background: 'rgba(255, 255, 255, 0.7)', backdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.4)', zIndex: 10,
+                  boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.08)',
+                  position: 'relative'
                 }}
               >
-                <motion.div variants={fadeInUp} style={{ marginBottom: '20px' }}>
-                  <span style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    backgroundColor: colors.gold[100],
-                    color: colors.gold[600],
-                    padding: '6px 14px',
-                    borderRadius: '9999px',
-                    fontSize: '0.875rem',
-                    fontWeight: '500',
-                  }}>
-                    <Sparkles size={16} />
-                    Welcome to Excellence
-                  </span>
-                </motion.div>
-
-                <motion.h1
-                  variants={fadeInUp}
-                  style={{
-                    fontSize: '2.5rem',
-                    fontWeight: '300',
-                    color: colors.stone[800],
-                    marginBottom: '24px',
-                    lineHeight: '1.2',
-                  }}
-                >
-                  We Deliver
-                  <span style={{
-                    display: 'block',
-                    fontWeight: '500',
-                    color: colors.gold[500],
-                    marginTop: '6px',
-                  }}>
-                    Growth & Success
-                  </span>
-                </motion.h1>
-                <style>{`
-                  @media (min-width: 640px) {
-                    h1 {
-                      font-size: 3rem !important;
-                    }
-                  }
-                  @media (min-width: 1024px) {
-                    h1 {
-                      font-size: 4rem !important;
-                    }
-                  }
-                `}</style>
-
-                <motion.p
-                  variants={fadeInUp}
-                  style={{
-                    fontSize: '1rem',
-                    color: colors.stone[600],
-                    marginBottom: '32px',
-                    maxWidth: '32rem',
-                    lineHeight: '1.6',
-                  }}
-                >
-                  Transforming visions into reality with innovative solutions and strategic excellence. Your partner in achieving remarkable results.
-                </motion.p>
-
-                {/* Stats section - Horizontal on mobile */}
-                <motion.div
-                  variants={fadeInUp}
-                  style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    justifyContent: 'space-between',
-                    gap: '16px',
-                    marginBottom: '32px',
-                  }}
-                >
-                  {[
-                    { icon: TrendingUp, value: '98%', label: 'Success Rate' },
-                    { icon: Users, value: '15+', label: 'Happy Clients' },
-                    { icon: Award, value: '1.5+', label: 'Years Excellence' },
-                  ].map((stat, index) => (
-                    <motion.div
-                      key={index}
-                      style={{ 
-                        textAlign: 'center',
-                        flex: '1 1 auto',
-                        minWidth: '100px'
-                      }}
-                      whileHover={{ y: -5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <stat.icon style={{ width: '24px', height: '24px', color: colors.gold[400], margin: '0 auto 8px' }} />
-                      <div style={{ fontSize: '1.25rem', fontWeight: '500', color: colors.stone[800] }}>{stat.value}</div>
-                      <div style={{ fontSize: '0.7rem', color: colors.stone[500] }}>{stat.label}</div>
-                    </motion.div>
-                  ))}
-                </motion.div>
-
-                {/* CTA Buttons - Stack on mobile */}
-                <motion.div
-                  variants={fadeInUp}
-                  style={{ 
-                    display: 'flex', 
-                    flexDirection: 'column',
-                    gap: '12px',
-                  }}
-                >
-                  <style>{`
-                    @media (min-width: 480px) {
-                      .cta-buttons {
-                        flex-direction: row !important;
-                      }
-                    }
-                  `}</style>
-                  <div className="cta-buttons" style={{ 
-                    display: 'flex', 
-                    flexDirection: 'column',
-                    gap: '12px',
-                    width: '100%'
-                  }}>
-                    <Link to="/contact">
-                    <motion.button
-                      style={{
-                        padding: '14px 28px',
-                        backgroundColor: colors.stone[800],
-                        color: colors.beige[50],
-                        borderRadius: '8px',
-                        fontWeight: '500',
-                        border: 'none',
-                        cursor: 'pointer',
-                        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-                        width: '100%',
-                      }}
-                      whileHover={{ scale: 1.02, backgroundColor: colors.stone[700] }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      Start Your Journey
-                    </motion.button>
-</Link>
-                    <motion.button
-                      style={{
-                        padding: '14px 28px',
-                        backgroundColor: 'transparent',
-                        color: colors.stone[700],
-                        borderRadius: '8px',
-                        fontWeight: '500',
-                        border: `2px solid ${colors.stone[300]}`,
-                        cursor: 'pointer',
-                        width: '100%',
-                      }}
-                      whileHover={{ scale: 1.02, borderColor: colors.gold[400], color: colors.gold[600] }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      Watch Video
-                    </motion.button>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+                  <div style={{ width: '40px', height: '40px', borderRadius: '10px', backgroundColor: colors.gold[400], display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <TrendingUp size={20} color="white" />
                   </div>
-                </motion.div>
-              </motion.section>
+                  <span style={{ fontSize: '0.8rem', fontWeight: '700', color: colors.stone[400] }}>LIVE METRICS</span>
+                </div>
 
-              {/* Right side - SVG Image */}
-              {/* Right side - SVG Image */}
-<motion.section
-  initial="initial"
-  animate="animate"
-  variants={staggerContainer}
-  style={{ 
-    position: 'relative',
-    order: 2,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }}
->
-  <motion.div
-    variants={fadeInRight}
-    style={{
-      width: '100%',
-      maxWidth: '500px',
-      margin: '0 auto',
-      position: 'relative',
-    }}
-  >
-    <img 
-      src="/landingPage.png" 
-      alt="GrowwZa Studios - Creative Agency"
-      style={{
-        width: '100%',
-        height: 'auto',
-        maxHeight: '400px',
-        objectFit: 'contain',
-      }}
-    />
+                <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+                  <div style={{ position: 'relative', display: 'inline-block' }}>
+                    <svg width="120" height="120">
+                      <circle cx="60" cy="60" r="54" fill="none" stroke={colors.gold[100]} strokeWidth="10" />
+                      <motion.circle 
+                        cx="60" cy="60" r="54" fill="none" stroke={colors.gold[400]} strokeWidth="10" strokeLinecap="round"
+                        strokeDasharray="339.29"
+                        initial={{ strokeDashoffset: 339.29 }}
+                        animate={{ strokeDashoffset: 84.8 }}
+                        transition={{ duration: 2.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+                      />
+                    </svg>
+                    <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center' }}>
+                      <span style={{ fontSize: '1.5rem', fontWeight: '800', color: colors.stone[800] }}>92%</span>
+                    </div>
+                  </div>
+                  <h4 style={{ margin: '12px 0 4px', color: colors.stone[700] }}>Client Retention</h4>
+                  <p style={{ margin: 0, fontSize: '0.85rem', color: colors.stone[400] }}>Industry Leading Performance</p>
+                </div>
 
-    {/* Floating particles */}
-    <div style={{ position: 'relative' }}>
-      {[...Array(6)].map((_, i) => (
-        <motion.div
-          key={i}
-          style={{
-            position: 'absolute',
-            width: i % 2 === 0 ? '8px' : '12px',
-            height: i % 2 === 0 ? '8px' : '12px',
-            backgroundColor: colors.gold[i % 2 === 0 ? 400 : 300],
-            borderRadius: '9999px',
-            left: `${10 + i * 15}%`,
-            top: `${10 + i * 12}%`,
-            opacity: 0.6,
-            pointerEvents: 'none',
-          }}
-          animate={{
-            x: [0, (i % 2 === 0 ? 30 : -30)],
-            y: [0, (i % 3 === 0 ? 30 : -30)],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 4 + i,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: i * 0.3,
-          }}
-        />
-      ))}
-    </div>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  {[1, 2, 3, 4].map(i => (
+                    <motion.div 
+                      key={i}
+                      style={{ height: '30px', flex: 1, backgroundColor: colors.gold[100], borderRadius: '6px' }}
+                      animate={{ height: [20, 40, 20] }}
+                      transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
+                    />
+                  ))}
+                </div>
+              </motion.div>
 
-    {/* Quote overlay - Desktop only */}
-    <motion.div
-      className="desktop-quote"
-      style={{
-        position: 'absolute',
-        bottom: '-40px',
-        left: '-40px',
-        backgroundColor: 'rgba(255, 255, 255, 0.9)',
-        backdropFilter: 'blur(8px)',
-        padding: '20px',
-        borderRadius: '12px',
-        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-        maxWidth: '280px',
-        border: `1px solid ${colors.gold[200]}`,
-        display: 'none', // Hidden by default
-      }}
-      initial={{ opacity: 0, x: -50 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: 1.2, duration: 0.6 }}
-    >
-      <style>{`
-        @media (min-width: 768px) {
-          .desktop-quote {
-            display: block !important;
-          }
-        }
-      `}</style>
-      <p style={{ 
-        color: colors.stone[700], 
-        fontStyle: 'italic', 
-        margin: 0, 
-        fontSize: '0.95rem',
-        lineHeight: '1.5'
-      }}>
-        "The best way to predict the future is to create it."
-      </p>
-      <p style={{ 
-        color: colors.gold[500], 
-        marginTop: '8px', 
-        fontWeight: '500', 
-        fontSize: '0.85rem',
-        textAlign: 'right'
-      }}>
-        — Peter Drucker
-      </p>
-    </motion.div>
-  </motion.div>
-</motion.section>
-            </div>
+              {/* Floating Elements */}
+              <motion.div
+                style={{
+                  position: 'absolute', top: '15%', right: '5%', padding: '12px 20px',
+                  backgroundColor: colors.stone[800], color: 'white', borderRadius: '16px',
+                  display: 'flex', alignItems: 'center', gap: '10px', zIndex: 11, boxShadow: '0 10px 20px rgba(0,0,0,0.2)'
+                }}
+                animate={{ y: [0, -15, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Rocket size={18} color={colors.gold[300]} />
+                <span style={{ fontSize: '0.9rem', fontWeight: '600' }}>Fast Growth</span>
+              </motion.div>
+
+              <motion.div
+                style={{
+                  position: 'absolute', bottom: '15%', left: '0%', padding: '12px 20px',
+                  backgroundColor: 'white', color: colors.stone[700], borderRadius: '16px',
+                  display: 'flex', alignItems: 'center', gap: '10px', zIndex: 11, border: `1px solid ${colors.gold[200]}`
+                }}
+                animate={{ y: [0, 15, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              >
+                <Lightbulb size={18} color={colors.gold[500]} />
+                <span style={{ fontSize: '0.9rem', fontWeight: '600' }}>Innovation</span>
+              </motion.div>
+
+              {/* Decorative dots grid */}
+              <div style={{ 
+                position: 'absolute', top: '10%', left: '10%', display: 'grid', 
+                gridTemplateColumns: 'repeat(5, 1fr)', gap: '12px', opacity: 0.3 
+              }}>
+                {[...Array(25)].map((_, i) => (
+                  <div key={i} style={{ width: '4px', height: '4px', backgroundColor: colors.stone[400], borderRadius: '50%' }} />
+                ))}
+              </div>
+            </motion.section>
           </div>
         </div>
       </div>
 
-      {/* Mobile Get in Touch Button */}
-      <motion.div
-        style={{
-          position: 'fixed',
-          bottom: '20px',
-          right: '20px',
-          zIndex: 40,
-          display: 'block',
-        }}
-        className="mobile-button"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 1 }}
-      >
-        <style>{`
-          @media (min-width: 768px) {
-            .mobile-button {
-              display: none !important;
-            }
-          }
-        `}</style>
-        <Link to="/contact" style={{ textDecoration: 'none' }}>
-          <motion.button
-            style={{
-              width: '56px',
-              height: '56px',
-              backgroundColor: colors.gold[400],
-              color: colors.stone[800],
-              borderRadius: '9999px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: 'none',
-              cursor: 'pointer',
-              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
-            }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            animate={pulseAnimation.animate}
-          >
-            <PhoneCall size={24} />
-          </motion.button>
-        </Link>
-      </motion.div>
-
       <ServicesLanding />
-      
-      {/* Add Inter font */}
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
     </main>
   );
 };
