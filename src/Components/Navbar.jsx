@@ -51,7 +51,7 @@ const Navbar = () => {
     <header
       className="fixed top-0 left-0 w-full z-50 transition-all duration-300"
       style={{
-        backgroundColor: scrolled ? `${colors.beige[50]}f2` : `${colors.beige[50]}e6`,
+        backgroundColor: scrolled ? `${colors.beige[50]}f2` : `${colors.beige[100]}e6`,
         backdropFilter: 'blur(8px)',
         boxShadow: scrolled ? '0 10px 30px -10px rgba(0, 0, 0, 0.1)' : 'none',
       }}
@@ -59,7 +59,7 @@ const Navbar = () => {
     >
       {/* Skip link for accessibility */}
       <a
-        href="#main-content"
+        href="/"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 px-4 py-2 rounded-md z-50"
         style={{
           backgroundColor: colors.stone[800],
@@ -78,7 +78,7 @@ const Navbar = () => {
   aria-label="Homepage"
 >
   <img 
-    src="/logo2.png" 
+    src="/transparent_logo.svg" 
     alt="GrowwZa Studios Logo" 
     style={{
       height: '60px',

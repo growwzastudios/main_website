@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { 
   Facebook, Twitter, Instagram, Linkedin, Youtube, 
   Mail, Phone, MapPin, ChevronRight, ArrowUp,
@@ -41,40 +42,39 @@ const Footer = () => {
     about: {
       title: "ABOUT US",
       links: [
-        { name: "Our Story", href: "#story" },
-        { name: "Portfolio", href: "#portfolio" },
-        { name: "Clients", href: "#clients" },
-        { name: "Awards & Recognitions", href: "#awards" },
-        { name: "Career", href: "#career" },
-        { name: "Contact Us", href: "#contact" },
+        { name: "Our Story", to: "/about" },
+        { name: "Portfolio", to: "/portfolio" },
+        { name: "Clients", to: "/" },
+        { name: "Awards & Recognitions", to: "#" },
+        { name: "Career", to: "#" },
+        { name: "Contact Us", to: "/contact" },
       ]
     },
     products: {
       title: "OUR PRODUCTS",
       links: [
-        { name: "Shopaccino", href: "#shopaccino" },
-        { name: "Task Officer", href: "#task-officer" },
+        { name: "Colaborator", to: "/products/colaborator" },
+        { name: "Task Officer", to: "/products/task-officer" },
       ]
     },
     design: {
-      title: "DESIGN & DEVELOPMENT",
+      title: "DEVELOPMENT",
       links: [
-        { name: "Responsive Web Design", href: "#web-design" },
-        { name: "Ecommerce Development", href: "#ecommerce" },
-        { name: "Web Application Development", href: "#web-apps" },
-        { name: "Mobile Application Development", href: "#mobile-apps" },
+        { name: "Responsive Web Design", to: "/services/web-design" },
+        { name: "Ecommerce Development", to: "/services/ecommerce" },
+        { name: "Web Application Development", to: "/services/web-app" },
+        { name: "Mobile Application Development", to: "/services/mobile-app" },
       ]
     },
     marketing: {
-      title: "MARKETING",
+      title: "DESIGN AND BRANDING",
       links: [
-        { name: "360 Web Marketing", href: "#web-marketing" },
-        { name: "Search Engine Optimization", href: "#seo" },
-        { name: "Social Media Optimization", href: "#smo" },
-        { name: "PPC Management", href: "#ppc" },
-        { name: "Moment Marketing", href: "#moment-marketing" },
-        { name: "Reputation Management", href: "#reputation" },
-        { name: "Email Marketing Automation", href: "#email-marketing" },
+        { name: "Web Marketing", to: "/services/web-marketing" },
+        { name: "Graphic Design", to: "/services/graphic-design" },
+        { name: "Social Media Management", to: "/services/social-media" },
+        { name: "Search Engine Optimization", to: "/services/seo" },
+        { name: "Branding", to: "/services/branding" },
+        { name: "Logo Design", to: "/services/logo-design" }
       ]
     },
     industries: [
@@ -84,11 +84,11 @@ const Footer = () => {
       "Service Providers"
     ],
     social: [
-      { icon: <Facebook size={20} />, name: "Facebook", href: "#", color: "#1877F2" },
-      { icon: <Twitter size={20} />, name: "Twitter", href: "#", color: "#1DA1F2" },
-      { icon: <Instagram size={20} />, name: "Instagram", href: "#", color: "#E4405F" },
-      { icon: <Linkedin size={20} />, name: "LinkedIn", href: "#", color: "#0A66C2" },
-      { icon: <Youtube size={20} />, name: "YouTube", href: "#", color: "#FF0000" },
+      { icon: <Facebook size={20} />, name: "Facebook", to: "#", color: "#1877F2" },
+      { icon: <Twitter size={20} />, name: "Twitter", to: "#", color: "#1DA1F2" },
+      { icon: <Instagram size={20} />, name: "Instagram", to: "#", color: "#E4405F" },
+      { icon: <Linkedin size={20} />, name: "LinkedIn", to: "#", color: "#0A66C2" },
+      { icon: <Youtube size={20} />, name: "YouTube", to: "#", color: "#FF0000" },
     ]
   };
 
@@ -118,13 +118,250 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  return (
-    <footer style={{
+  // Styles object with media queries
+  const styles = {
+    footer: {
       background: colors.stone[900],
       color: colors.stone[300],
       fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
       position: 'relative',
-    }}>
+    },
+    container: {
+      maxWidth: '1400px',
+      margin: '0 auto',
+      padding: '60px 20px 30px',
+      '@media (min-width: 768px)': {
+        padding: '60px 30px 40px',
+      }
+    },
+    connectSection: {
+      marginBottom: '40px',
+      '@media (min-width: 768px)': {
+        marginBottom: '50px',
+      }
+    },
+    connectTitle: {
+      fontSize: '1rem',
+      fontWeight: '600',
+      color: 'white',
+      letterSpacing: '2px',
+      marginBottom: '20px',
+      position: 'relative',
+      display: 'inline-block',
+      '@media (min-width: 768px)': {
+        fontSize: '1.2rem',
+        marginBottom: '25px',
+      }
+    },
+    socialContainer: {
+      display: 'flex',
+      gap: '12px',
+      flexWrap: 'wrap',
+      '@media (min-width: 768px)': {
+        gap: '15px',
+      }
+    },
+    socialIcon: {
+      width: '40px',
+      height: '40px',
+      borderRadius: '50%',
+      background: colors.stone[800],
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: colors.stone[300],
+      transition: 'all 0.3s ease',
+      textDecoration: 'none',
+      '@media (min-width: 768px)': {
+        width: '45px',
+        height: '45px',
+      }
+    },
+    linksGrid: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(2, 1fr)',
+      gap: '25px',
+      marginBottom: '40px',
+      '@media (min-width: 768px)': {
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        gap: '40px',
+        marginBottom: '50px',
+      }
+    },
+    linkTitle: {
+      fontSize: '0.9rem',
+      fontWeight: '600',
+      color: 'white',
+      letterSpacing: '1px',
+      marginBottom: '15px',
+      '@media (min-width: 768px)': {
+        fontSize: '1rem',
+        marginBottom: '20px',
+      }
+    },
+    linkItem: {
+      marginBottom: '8px',
+      '@media (min-width: 768px)': {
+        marginBottom: '12px',
+      }
+    },
+    link: {
+      color: colors.stone[400],
+      textDecoration: 'none',
+      fontSize: '0.8rem',
+      transition: 'color 0.3s ease',
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: '3px',
+      '@media (min-width: 768px)': {
+        fontSize: '0.9rem',
+        gap: '5px',
+      }
+    },
+    chevronIcon: {
+      size: 12,
+      color: colors.gold[400],
+      opacity: 0.7,
+      '@media (min-width: 768px)': {
+        size: 14,
+      }
+    },
+    industriesSection: {
+      marginBottom: '40px',
+      padding: '25px 0',
+      borderTop: `1px solid ${colors.stone[800]}`,
+      borderBottom: `1px solid ${colors.stone[800]}`,
+      display: 'none',
+      '@media (min-width: 768px)': {
+        display: 'block',
+        marginBottom: '50px',
+        padding: '30px 0',
+      }
+    },
+    industriesTitle: {
+      fontSize: '1rem',
+      fontWeight: '600',
+      color: 'white',
+      letterSpacing: '1px',
+      marginBottom: '20px',
+    },
+    industriesGrid: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+      gap: '15px',
+    },
+    industryLink: {
+      color: colors.stone[400],
+      textDecoration: 'none',
+      fontSize: '0.9rem',
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: '5px',
+    },
+    contactSection: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '15px',
+      marginBottom: '20px',
+      '@media (min-width: 768px)': {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '30px',
+      }
+    },
+    contactInfo: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '10px',
+      '@media (min-width: 480px)': {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+      },
+      '@media (min-width: 768px)': {
+        gap: '15px',
+      }
+    },
+    contactItem: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px',
+    },
+    contactText: {
+      color: colors.stone[400],
+      textDecoration: 'none',
+      fontSize: '0.8rem',
+      '@media (min-width: 768px)': {
+        fontSize: '0.9rem',
+      }
+    },
+    legalLinks: {
+      display: 'flex',
+      gap: '15px',
+      flexWrap: 'wrap',
+    },
+    legalLink: {
+      color: colors.stone[400],
+      textDecoration: 'none',
+      fontSize: '0.8rem',
+      '@media (min-width: 768px)': {
+        fontSize: '0.9rem',
+      }
+    },
+    copyrightSection: {
+      padding: '15px 0',
+      borderTop: `1px solid ${colors.stone[800]}`,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '15px',
+      '@media (min-width: 768px)': {
+        padding: '20px 0',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }
+    },
+    copyrightText: {
+      color: colors.stone[500],
+      fontSize: '0.7rem',
+      margin: 0,
+      '@media (min-width: 768px)': {
+        fontSize: '0.85rem',
+      }
+    },
+    cinText: {
+      color: colors.stone[600],
+      fontSize: '0.65rem',
+      margin: '3px 0 0',
+      '@media (min-width: 768px)': {
+        fontSize: '0.8rem',
+      }
+    },
+    footerLinks: {
+      display: 'flex',
+      gap: '15px',
+    },
+    footerLink: {
+      color: colors.stone[500],
+      textDecoration: 'none',
+      fontSize: '0.7rem',
+      display: 'flex',
+      alignItems: 'center',
+      '@media (min-width: 768px)': {
+        fontSize: '0.8rem',
+      }
+    },
+    footerLinkIcon: {
+      marginRight: '3px',
+      '@media (min-width: 768px)': {
+        marginRight: '5px',
+      }
+    }
+  };
+
+  return (
+    <footer style={styles.footer}>
       {/* Add Inter font */}
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
@@ -164,25 +401,16 @@ const Footer = () => {
       </motion.button>
 
       {/* Main Footer Content */}
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '60px 30px 40px' }}>
+      <div style={styles.container}>
         {/* Connect With Us Section */}
-        
         <motion.div
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.1 }}
           variants={staggerContainer}
-          style={{ marginBottom: '50px' }}
+          style={styles.connectSection}
         >
-          <motion.h3 variants={fadeInUp} style={{
-            fontSize: '1.2rem',
-            fontWeight: '600',
-            color: 'white',
-            letterSpacing: '2px',
-            marginBottom: '25px',
-            position: 'relative',
-            display: 'inline-block',
-          }}>
+          <motion.h3 variants={fadeInUp} style={styles.connectTitle}>
             CONNECT WITH US
             <span style={{
               position: 'absolute',
@@ -194,28 +422,13 @@ const Footer = () => {
             }} />
           </motion.h3>
 
-          <motion.div variants={fadeInUp} style={{
-            display: 'flex',
-            gap: '15px',
-            flexWrap: 'wrap',
-          }}>
+          <motion.div variants={fadeInUp} style={styles.socialContainer}>
             {footerData.social.map((social, index) => (
               <motion.a
                 key={index}
-                href={social.href}
+                href={social.to}
                 aria-label={social.name}
-                style={{
-                  width: '45px',
-                  height: '45px',
-                  borderRadius: '50%',
-                  background: colors.stone[800],
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: colors.stone[300],
-                  transition: 'all 0.3s ease',
-                  textDecoration: 'none',
-                }}
+                style={styles.socialIcon}
                 whileHover={{
                   scale: 1.1,
                   background: social.color,
@@ -235,47 +448,22 @@ const Footer = () => {
           whileInView="animate"
           viewport={{ once: true, amount: 0.1 }}
           variants={staggerContainer}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '40px',
-            marginBottom: '50px',
-          }}
+          style={styles.linksGrid}
         >
           {/* About Us */}
           <motion.div variants={scaleIn}>
-            <h4 style={{
-              fontSize: '1rem',
-              fontWeight: '600',
-              color: 'white',
-              letterSpacing: '1px',
-              marginBottom: '20px',
-            }}>
-              {footerData.about.title}
-            </h4>
+            <h4 style={styles.linkTitle}>{footerData.about.title}</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               {footerData.about.links.map((link, index) => (
                 <motion.li
                   key={index}
-                  style={{ marginBottom: '12px' }}
+                  style={styles.linkItem}
                   whileHover={{ x: 5 }}
                 >
-                  <a
-                    href={link.href}
-                    style={{
-                      color: colors.stone[400],
-                      textDecoration: 'none',
-                      fontSize: '0.9rem',
-                      transition: 'color 0.3s ease',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '5px',
-                    }}
-                    whileHover={{ color: colors.gold[400] }}
-                  >
-                    <ChevronRight size={14} style={{ color: colors.gold[400], opacity: 0.7 }} />
+                  <Link to={link.to} style={styles.link}>
+                    <ChevronRight size={styles.chevronIcon.size} style={{ color: colors.gold[400], opacity: 0.7 }} />
                     {link.name}
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </ul>
@@ -283,38 +471,18 @@ const Footer = () => {
 
           {/* Our Products */}
           <motion.div variants={scaleIn}>
-            <h4 style={{
-              fontSize: '1rem',
-              fontWeight: '600',
-              color: 'white',
-              letterSpacing: '1px',
-              marginBottom: '20px',
-            }}>
-              {footerData.products.title}
-            </h4>
+            <h4 style={styles.linkTitle}>{footerData.products.title}</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               {footerData.products.links.map((link, index) => (
                 <motion.li
                   key={index}
-                  style={{ marginBottom: '12px' }}
+                  style={styles.linkItem}
                   whileHover={{ x: 5 }}
                 >
-                  <a
-                    href={link.href}
-                    style={{
-                      color: colors.stone[400],
-                      textDecoration: 'none',
-                      fontSize: '0.9rem',
-                      transition: 'color 0.3s ease',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '5px',
-                    }}
-                    whileHover={{ color: colors.gold[400] }}
-                  >
-                    <ChevronRight size={14} style={{ color: colors.gold[400], opacity: 0.7 }} />
+                  <Link to={link.to} style={styles.link}>
+                    <ChevronRight size={styles.chevronIcon.size} style={{ color: colors.gold[400], opacity: 0.7 }} />
                     {link.name}
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </ul>
@@ -322,38 +490,18 @@ const Footer = () => {
 
           {/* Design & Development */}
           <motion.div variants={scaleIn}>
-            <h4 style={{
-              fontSize: '1rem',
-              fontWeight: '600',
-              color: 'white',
-              letterSpacing: '1px',
-              marginBottom: '20px',
-            }}>
-              {footerData.design.title}
-            </h4>
+            <h4 style={styles.linkTitle}>{footerData.design.title}</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               {footerData.design.links.map((link, index) => (
                 <motion.li
                   key={index}
-                  style={{ marginBottom: '12px' }}
+                  style={styles.linkItem}
                   whileHover={{ x: 5 }}
                 >
-                  <a
-                    href={link.href}
-                    style={{
-                      color: colors.stone[400],
-                      textDecoration: 'none',
-                      fontSize: '0.9rem',
-                      transition: 'color 0.3s ease',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '5px',
-                    }}
-                    whileHover={{ color: colors.gold[400] }}
-                  >
-                    <ChevronRight size={14} style={{ color: colors.gold[400], opacity: 0.7 }} />
+                  <Link to={link.to} style={styles.link}>
+                    <ChevronRight size={styles.chevronIcon.size} style={{ color: colors.gold[400], opacity: 0.7 }} />
                     {link.name}
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </ul>
@@ -361,38 +509,18 @@ const Footer = () => {
 
           {/* Marketing */}
           <motion.div variants={scaleIn}>
-            <h4 style={{
-              fontSize: '1rem',
-              fontWeight: '600',
-              color: 'white',
-              letterSpacing: '1px',
-              marginBottom: '20px',
-            }}>
-              {footerData.marketing.title}
-            </h4>
+            <h4 style={styles.linkTitle}>{footerData.marketing.title}</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               {footerData.marketing.links.map((link, index) => (
                 <motion.li
                   key={index}
-                  style={{ marginBottom: '12px' }}
+                  style={styles.linkItem}
                   whileHover={{ x: 5 }}
                 >
-                  <a
-                    href={link.href}
-                    style={{
-                      color: colors.stone[400],
-                      textDecoration: 'none',
-                      fontSize: '0.9rem',
-                      transition: 'color 0.3s ease',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '5px',
-                    }}
-                    whileHover={{ color: colors.gold[400] }}
-                  >
-                    <ChevronRight size={14} style={{ color: colors.gold[400], opacity: 0.7 }} />
+                  <Link to={link.to} style={styles.link}>
+                    <ChevronRight size={styles.chevronIcon.size} style={{ color: colors.gold[400], opacity: 0.7 }} />
                     {link.name}
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </ul>
@@ -405,30 +533,15 @@ const Footer = () => {
           whileInView="animate"
           viewport={{ once: true }}
           variants={staggerContainer}
-          style={{
-            marginBottom: '50px',
-            padding: '30px 0',
-            borderTop: `1px solid ${colors.stone[800]}`,
-            borderBottom: `1px solid ${colors.stone[800]}`,
-          }}
+          style={styles.industriesSection}
         >
-          <motion.h4 variants={fadeInUp} style={{
-            fontSize: '1rem',
-            fontWeight: '600',
-            color: 'white',
-            letterSpacing: '1px',
-            marginBottom: '20px',
-          }}>
+          <motion.h4 variants={fadeInUp} style={styles.industriesTitle}>
             INDUSTRIES
           </motion.h4>
           
           <motion.div
             variants={staggerContainer}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-              gap: '15px',
-            }}
+            style={styles.industriesGrid}
           >
             {footerData.industries.map((industry, index) => (
               <motion.a
@@ -436,14 +549,7 @@ const Footer = () => {
                 href={`#${industry.toLowerCase().replace(/\s+/g, '-')}`}
                 variants={scaleIn}
                 whileHover={{ x: 5, color: colors.gold[400] }}
-                style={{
-                  color: colors.stone[400],
-                  textDecoration: 'none',
-                  fontSize: '0.9rem',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '5px',
-                }}
+                style={styles.industryLink}
               >
                 <ChevronRight size={14} style={{ color: colors.gold[400], opacity: 0.5 }} />
                 {industry}
@@ -458,38 +564,31 @@ const Footer = () => {
           whileInView="animate"
           viewport={{ once: true }}
           variants={staggerContainer}
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '30px',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginBottom: '30px',
-          }}
+          style={styles.contactSection}
         >
-          <motion.div variants={fadeInUp} style={{ display: 'flex', alignItems: 'center', gap: '15px', flexWrap: 'wrap' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Mail size={18} color={colors.gold[400]} />
-              <a href="mailto:info@solutionmicrosystems.com" style={{ color: colors.stone[400], textDecoration: 'none', fontSize: '0.9rem' }}>
-                info@solutionmicrosystems.com
+          <motion.div variants={fadeInUp} style={styles.contactInfo}>
+            <div style={styles.contactItem}>
+              <Mail size={16} color={colors.gold[400]} />
+              <a href="mailto:growwzastudios@gmail.com" style={styles.contactText}>
+                growwzastudios@gmail.com
               </a>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Phone size={18} color={colors.gold[400]} />
-              <a href="tel:+911234567890" style={{ color: colors.stone[400], textDecoration: 'none', fontSize: '0.9rem' }}>
-                +91 123 456 7890
+            <div style={styles.contactItem}>
+              <Phone size={16} color={colors.gold[400]} />
+              <a href="tel:+919358254199" style={styles.contactText}>
+                +91 9358254199
               </a>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <MapPin size={18} color={colors.gold[400]} />
-              <span style={{ color: colors.stone[400], fontSize: '0.9rem' }}>Jaipur, Rajasthan</span>
+            <div style={styles.contactItem}>
+              <MapPin size={16} color={colors.gold[400]} />
+              <span style={styles.contactText}>Jaipur, Rajasthan</span>
             </div>
           </motion.div>
 
-          <motion.div variants={fadeInUp} style={{ display: 'flex', gap: '20px' }}>
-            <a href="#terms" style={{ color: colors.stone[400], textDecoration: 'none', fontSize: '0.9rem' }}>Terms & Conditions</a>
-            <a href="#privacy" style={{ color: colors.stone[400], textDecoration: 'none', fontSize: '0.9rem' }}>Privacy Policy</a>
-            <a href="#disclaimer" style={{ color: colors.stone[400], textDecoration: 'none', fontSize: '0.9rem' }}>Disclaimer</a>
+          <motion.div variants={fadeInUp} style={styles.legalLinks}>
+            <Link to="/terms" style={styles.legalLink}>Terms & Conditions</Link>
+            <Link to="/privacy" style={styles.legalLink}>Privacy Policy</Link>
+            <Link to="/disclaimer" style={styles.legalLink}>Disclaimer</Link>
           </motion.div>
         </motion.div>
 
@@ -499,38 +598,30 @@ const Footer = () => {
           whileInView="animate"
           viewport={{ once: true }}
           variants={staggerContainer}
-          style={{
-            padding: '20px 0',
-            borderTop: `1px solid ${colors.stone[800]}`,
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '20px',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
+          style={styles.copyrightSection}
         >
           <motion.div variants={fadeInUp}>
-            <p style={{ color: colors.stone[500], fontSize: '0.85rem', margin: 0 }}>
-              © 2004 - 2024 | Solution Microsystems Private Limited
+            <p style={styles.copyrightText}>
+              © 2024 - 2026 | Growwza Studios Private Limited
             </p>
-            <p style={{ color: colors.stone[600], fontSize: '0.8rem', margin: '5px 0 0' }}>
+            <p style={styles.cinText}>
               Corporate Identification Number: U72200RJ2009PTC030152
             </p>
           </motion.div>
 
-          <motion.div variants={fadeInUp} style={{ display: 'flex', gap: '15px' }}>
-            <a href="#terms" style={{ color: colors.stone[500], textDecoration: 'none', fontSize: '0.8rem' }}>
-              <FileText size={14} style={{ marginRight: '5px', display: 'inline' }} />
+          <motion.div variants={fadeInUp} style={styles.footerLinks}>
+            <Link to="/terms" style={styles.footerLink}>
+              <FileText size={12} style={styles.footerLinkIcon} />
               Terms
-            </a>
-            <a href="#privacy" style={{ color: colors.stone[500], textDecoration: 'none', fontSize: '0.8rem' }}>
-              <Shield size={14} style={{ marginRight: '5px', display: 'inline' }} />
+            </Link>
+            <Link to="/privacy" style={styles.footerLink}>
+              <Shield size={12} style={styles.footerLinkIcon} />
               Privacy
-            </a>
-            <a href="#disclaimer" style={{ color: colors.stone[500], textDecoration: 'none', fontSize: '0.8rem' }}>
-              <Info size={14} style={{ marginRight: '5px', display: 'inline' }} />
+            </Link>
+            <Link to="/disclaimer" style={styles.footerLink}>
+              <Info size={12} style={styles.footerLinkIcon} />
               Disclaimer
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

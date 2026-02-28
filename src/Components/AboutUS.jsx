@@ -129,7 +129,7 @@ const AboutUsPage = () => {
       name: "Piyush Khandelwal",
       role: "Developer",
       bio: "Award-winning designer and developer passionate about creating meaningful experiences",
-      image: "👩‍🎨",
+      image: "👨‍💼",
       social: { github: "#", linkedin: "#", mail: "#" },
     },
     {
