@@ -59,9 +59,9 @@ const ServicesLanding = () => {
     },
     {
       id: 3,
-      name: "Usha Ji",
-      role: "Owner,Ghar ki Rasoi",
-      content: "They didn’t just design visuals; they crafted an experience. The new menu and graphics elevate our brand, delight our customers, and have boosted engagement like never before.",
+      name: "Purvi Shah",
+      role: "Artist",
+      content: "Every aspect of the website runs flawlessly, thanks to the expert coding and meticulous attention to detail. Additionally, the SEO enhancements have significantly boosted visibility, driving more traffic and engagement to the site",
       rating: 5,
       image:"👨‍💼"
     },
@@ -75,8 +75,8 @@ const ServicesLanding = () => {
     },
     {
       id: 5,
-      name: "Saurabh Sharma",
-      role: "",
+      name: "Zigi O",
+      role: "Owner, Zigi's Wine Bar",
       content: "The most dedicated professionals I've worked with. Their SEO strategy doubled our organic traffic in just 3 months. Highly recommended!",
       rating: 5,
       image:"👨‍💼"
@@ -261,35 +261,39 @@ const ServicesLanding = () => {
 
   // Recent work data
   const recentWork = [
-    {
-      title: "Luxury E-commerce Platform",
-      category: "Web Development",
-      description: "Premium shopping experience with AR try-on feature",
-      image: "🛍️",
-      gradient: "linear-gradient(135deg, #c9b28b, #b9a282)"
-    },
-    {
-      title: "FinTech Mobile App",
-      category: "App Development",
-      description: "Secure investment platform with real-time analytics",
-      image: "📱",
-      gradient: "linear-gradient(135deg, #b9a282, #a18d71)"
-    },
-    {
-      title: "Global Brand Identity",
-      category: "Branding",
-      description: "Complete rebrand for international tech company",
-      image: "✨",
-      gradient: "linear-gradient(135deg, #a18d71, #8b7557)"
-    },
-    {
-      title: "Social Media Campaign",
-      category: "Digital Marketing",
-      description: "Viral campaign reaching 2M+ engaged users",
-      image: "🚀",
-      gradient: "linear-gradient(135deg, #dcc5a8, #c9b28b)"
-    }
-  ];
+  {
+    title: "Zigi's Wine Bar",
+    category: "Web Development",
+    description: "A rooted bar in Australia which is established in 1980's",
+    image: "/showCase1.png", // Using placeholder for now
+    gradient: "linear-gradient(135deg, #c9b28b, #b9a282)",
+    link: "https://zigis.com.au/"
+  },
+  {
+    title: "Arts by Purvi Shah",
+    category: "Personal Portfolio",
+    description: "A one of it's kind handcrafted website for the artist",
+    image: "/showCase2.png", // Using placeholder for now
+    gradient: "linear-gradient(135deg, #b9a282, #a18d71)",
+    link: "https://www.artbypurvishah.com/"
+  },
+  {
+    title: "Wake Up Sports",
+    category: "Website development",
+    description: "Complete rebrand for international sports company",
+    image: "/showCase3.png", // Using placeholder for now
+    gradient: "linear-gradient(135deg, #a18d71, #8b7557)",
+    link: "https://www.wakeupuae.com/"
+  },
+  {
+    title: "Social Media Campaign for Tiara Store",
+    category: "Digital Marketing",
+    description: "Viral campaign reaching 2M+ engaged users",
+    image: "/showCase4.png", // Using placeholder for now
+    gradient: "linear-gradient(135deg, #dcc5a8, #c9b28b)",
+    link: ""
+  }
+];
 
   return (
     <main style={{ 
@@ -564,67 +568,127 @@ const ServicesLanding = () => {
           >
             {recentWork.map((work, index) => (
               <motion.article
-                key={index}
-                variants={scaleIn}
-                whileHover={{ y: -10 }}
-                style={{
-                  background: 'white',
-                  borderRadius: '30px',
-                  overflow: 'hidden',
-                  boxShadow: '0 20px 40px rgba(0, 0, 0, 0.08)',
-                }}
-              >
-                <div style={{
-                  height: '200px',
-                  background: work.gradient,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  position: 'relative',
-                  overflow: 'hidden',
-                }}>
-                  <motion.div
-                    animate={floatAnimation.animate}
-                    style={{ fontSize: '4rem' }}
-                  >
-                    {work.image}
-                  </motion.div>
-                  <motion.div
-                    style={{
-                      position: 'absolute',
-                      top: '16px',
-                      right: '16px',
-                      background: 'rgba(255, 255, 255, 0.2)',
-                      backdropFilter: 'blur(8px)',
-                      padding: '4px 12px',
-                      borderRadius: '20px',
-                      color: 'white',
-                      fontSize: '0.8rem',
-                      fontWeight: '500',
-                    }}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    {work.category}
-                  </motion.div>
-                </div>
-                <div style={{ padding: '24px' }}>
-                  <h3 style={{
-                    fontSize: '1.2rem',
-                    fontWeight: '500',
-                    color: colors.stone[800],
-                    marginBottom: '8px',
-                  }}>
-                    {work.title}
-                  </h3>
-                  <p style={{
-                    fontSize: '0.95rem',
-                    color: colors.stone[600],
-                    lineHeight: '1.5',
-                  }}>
-                    {work.description}
-                  </p>
-                </div>
-              </motion.article>
+  key={index}
+  variants={scaleIn}
+  whileHover={{ y: -10 }}
+  style={{
+    background: 'white',
+    borderRadius: '30px',
+    overflow: 'hidden',
+    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.08)',
+  }}
+>
+  {/* Image Container with actual image tag */}
+  <div style={{
+    height: '200px',
+    background: work.gradient,
+    position: 'relative',
+    overflow: 'hidden',
+  }}>
+    {/* Use actual img tag instead of emoji */}
+    <img 
+      src={work.image} 
+      alt={work.title}
+      style={{
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+      }}
+      onError={(e) => {
+        // Fallback if image fails to load
+        e.target.style.display = 'none';
+        e.target.parentElement.style.background = work.gradient;
+      }}
+    />
+    
+    {/* Category badge */}
+    <motion.div
+      style={{
+        position: 'absolute',
+        top: '16px',
+        right: '16px',
+        background: 'rgba(255, 255, 255, 0.2)',
+        backdropFilter: 'blur(8px)',
+        padding: '4px 12px',
+        borderRadius: '20px',
+        color: 'white',
+        fontSize: '0.8rem',
+        fontWeight: '500',
+        zIndex: 2,
+      }}
+      whileHover={{ scale: 1.05 }}
+    >
+      {work.category}
+    </motion.div>
+
+    {/* Optional: Add a clickable overlay for the link */}
+    {work.link && (
+      <motion.a
+        href={work.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: 'rgba(0, 0, 0, 0.5)',
+          color: 'white',
+          fontSize: '0.9rem',
+          fontWeight: '500',
+          textDecoration: 'none',
+          opacity: 0,
+          transition: 'opacity 0.3s ease',
+        }}
+        whileHover={{ opacity: 1 }}
+      >
+        View Project <ArrowRight size={16} style={{ marginLeft: '8px' }} />
+      </motion.a>
+    )}
+  </div>
+  
+  {/* Content */}
+  <div style={{ padding: '24px' }}>
+    <h3 style={{
+      fontSize: '1.2rem',
+      fontWeight: '500',
+      color: colors.stone[800],
+      marginBottom: '8px',
+    }}>
+      {work.title}
+    </h3>
+    <p style={{
+      fontSize: '0.95rem',
+      color: colors.stone[600],
+      lineHeight: '1.5',
+    }}>
+      {work.description}
+    </p>
+    
+    {/* Add view project link */}
+    {work.link && (
+      <motion.a
+        href={work.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '8px',
+          marginTop: '16px',
+          color: colors.gold[600],
+          textDecoration: 'none',
+          fontSize: '0.9rem',
+          fontWeight: '500',
+        }}
+        whileHover={{ x: 5 }}
+      >
+        Visit Website <ArrowRight size={14} />
+      </motion.a>
+    )}
+  </div>
+</motion.article>
             ))}
           </motion.div>
 

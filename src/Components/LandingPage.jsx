@@ -100,6 +100,51 @@ const LandingPage = () => {
         </Link>
       </motion.div>
 
+      {/* Mobile Get in Touch Button - Added from old code */}
+      <motion.div
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          zIndex: 40,
+          display: 'block',
+        }}
+        className="mobile-button"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 1 }}
+      >
+        <style>{`
+          @media (min-width: 768px) {
+            .mobile-button {
+              display: none !important;
+            }
+          }
+        `}</style>
+        <Link to="/contact" style={{ textDecoration: 'none' }}>
+          <motion.button
+            style={{
+              width: '56px',
+              height: '56px',
+              backgroundColor: colors.gold[400],
+              color: colors.stone[800],
+              borderRadius: '9999px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: 'none',
+              cursor: 'pointer',
+              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+            }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            animate={pulseAnimation.animate}
+          >
+            <PhoneCall size={24} />
+          </motion.button>
+        </Link>
+      </motion.div>
+
       {/* Main Hero Content */}
       <div style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '40px' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', width: '100%', zIndex: 10 }}>
@@ -259,6 +304,9 @@ const LandingPage = () => {
       </div>
 
       <ServicesLanding />
+      
+      {/* Add Inter font */}
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     </main>
   );
 };
