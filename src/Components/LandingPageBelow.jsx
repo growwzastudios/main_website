@@ -5,7 +5,11 @@ import {
   TrendingUp, Search, Megaphone, Code, ShoppingCart, 
   Users, Award, Sparkles, ChevronRight, MessageCircle,
   Camera, BarChart, Briefcase, Rocket, Heart, Zap,
-  ChevronLeft, ChevronRight as ChevronRightIcon
+  ChevronLeft, ChevronRight as ChevronRightIcon,
+  Database,
+  Share2,
+  Cpu,
+  Cloud
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -200,64 +204,95 @@ const ServicesLanding = () => {
   };
 
   // Services data (same as before)
-  const services = [
-    {
-      icon: <Code size={24} />,
-      title: "Web Design & Development",
-      description: "We not only design and develop websites but also nurture them into big brands. Create responsive designs with latest technologies.",
-      features: ["Responsive Design", "Latest Technologies", "Brand Focus"],
-      link: "#web-design"
-    },
-    {
-      icon: <ShoppingCart size={24} />,
-      title: "Ecommerce Development",
-      description: "Create ecommerce websites compatible for all devices. Develop custom ecommerce solutions that suit your business perfectly.",
-      features: ["Multi-device", "Custom Solutions", "Secure Payments"],
-      link: "#ecommerce"
-    },
-    {
-      icon: <Globe size={24} />,
-      title: "Web Application Development",
-      description: "Create web applications for all businesses, from startups to enterprises, providing users a unique digital experience.",
-      features: ["Scalable", "User-focused", "Latest Tech Stack"],
-      link: "#web-apps"
-    },
-    {
-      icon: <Smartphone size={24} />,
-      title: "Mobile App Development",
-      description: "Professional experts for developing customized mobile applications for Android & iPhone with user-centric approach.",
-      features: ["Android & iOS", "User-centric", "Modern UI/UX"],
-      link: "#mobile-apps"
-    },
-    {
-      icon: <Palette size={24} />,
-      title: "Graphics Designing",
-      description: "Creative designs that tell your story. From branding to marketing materials, we create visuals that leave lasting impressions.",
-      features: ["Brand Identity", "Marketing Materials", "Creative Direction"],
-      link: "#graphics"
-    },
-    {
-      icon: <Users size={24} />,
-      title: "Social Media Management",
-      description: "Engage your customers and increase business with the power of social media. Strategic content for maximum impact.",
-      features: ["Content Strategy", "Community Management", "Analytics"],
-      link: "#social-media"
-    },
-    {
-      icon: <Search size={24} />,
-      title: "SEO & Digital Marketing",
-      description: "Our organic SEO process will increase your rank on Google and drive relevant traffic to your website.",
-      features: ["Keyword Strategy", "On-page SEO", "Analytics"],
-      link: "#seo"
-    },
-    {
-      icon: <Megaphone size={24} />,
-      title: "Branding & Logos",
-      description: "Create memorable brand identities that resonate with your audience. From logos to complete brand guidelines.",
-      features: ["Logo Design", "Brand Guidelines", "Visual Identity"],
-      link: "#branding"
-    }
-  ];
+ const services = [
+  {
+    icon: <Code size={24} />,
+    title: "Web Design & Development",
+    description: "We not only design and develop websites but also nurture them into big brands. Create responsive designs with latest technologies.",
+    features: ["Responsive Design", "Latest Technologies", "Brand Focus"],
+    link: "#web-design"
+  },
+  {
+    icon: <ShoppingCart size={24} />,
+    title: "Ecommerce Development",
+    description: "Create ecommerce websites compatible for all devices. Develop custom ecommerce solutions that suit your business perfectly.",
+    features: ["Multi-device", "Custom Solutions", "Secure Payments"],
+    link: "#ecommerce"
+  },
+  {
+    icon: <Globe size={24} />,
+    title: "Web Application Development",
+    description: "Create web applications for all businesses, from startups to enterprises, providing users a unique digital experience.",
+    features: ["Scalable", "User-focused", "Latest Tech Stack"],
+    link: "#web-apps"
+  },
+  {
+    icon: <Smartphone size={24} />,
+    title: "Mobile App Development",
+    description: "Professional experts for developing customized mobile applications for Android & iPhone with user-centric approach.",
+    features: ["Android & iOS", "User-centric", "Modern UI/UX"],
+    link: "#mobile-apps"
+  },
+  {
+    icon: <Palette size={24} />,
+    title: "Graphics Designing",
+    description: "Creative designs that tell your story. From branding to marketing materials, we create visuals that leave lasting impressions.",
+    features: ["Brand Identity", "Marketing Materials", "Creative Direction"],
+    link: "#graphics"
+  },
+  {
+    icon: <Users size={24} />,
+    title: "Social Media Management",
+    description: "Engage your customers and increase business with the power of social media. Strategic content for maximum impact.",
+    features: ["Content Strategy", "Community Management", "Analytics"],
+    link: "#social-media"
+  },
+  {
+    icon: <Search size={24} />,
+    title: "SEO & Digital Marketing",
+    description: "Our organic SEO process will increase your rank on Google and drive relevant traffic to your website.",
+    features: ["Keyword Strategy", "On-page SEO", "Analytics"],
+    link: "#seo"
+  },
+  {
+    icon: <Megaphone size={24} />,
+    title: "Branding & Logos",
+    description: "Create memorable brand identities that resonate with your audience. From logos to complete brand guidelines.",
+    features: ["Logo Design", "Brand Guidelines", "Visual Identity"],
+    link: "#branding"
+  },
+  // New Columns
+  {
+    icon: <Cpu size={24} />, // Example icon for AI
+    title: "AI Automation & Agents",
+    description: "Harness the power of AI to automate workflows and deploy intelligent agents that enhance efficiency and decision-making.",
+    features: ["Workflow Automation", "Intelligent Agents", "Data-driven Insights"],
+    link: "#ai-automation"
+  },
+  {
+    icon: <Share2 size={24} />, // Example icon for integration
+    title: "Social Media Integration",
+    description: "Seamlessly integrate social media platforms with your business systems to maximize reach and engagement.",
+    features: ["Cross-platform Integration", "Automated Posting", "Analytics Sync"],
+    link: "#social-integration"
+  },
+  {
+    icon: <Database size={24} />, // Example icon for ERP/CRM
+    title: "ERP & CRM Solutions",
+    description: "Implement ERP and CRM systems tailored to your business needs, streamlining operations and enhancing customer relationships.",
+    features: ["Process Optimization", "Customer Management", "Scalable Solutions"],
+    link: "#erp-crm"
+  },
+  {
+  icon: <Cloud size={24} />, // Example icon for cloud solutions
+  title: "Cloud Solutions & DevOps",
+  description: "Leverage cloud infrastructure and DevOps practices to build scalable, secure, and efficient systems tailored to your business needs.",
+  features: ["Cloud Infrastructure", "CI/CD Automation", "Scalability & Security"],
+  link: "#cloud-devops"
+}
+
+];
+
 
   // Recent work data
   const recentWork = [

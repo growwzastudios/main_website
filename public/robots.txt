@@ -1,0 +1,16 @@
+User-agent: *
+# Allow all crawlers to access main content
+Allow: /
+
+# Block unnecessary or duplicate paths
+Disallow: /admin/
+Disallow: /login/
+Disallow: /register/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /search/
+
+# Prevent crawling of query parameters (common in React apps)
+Disallow: /*?*
+
+Sitemap: https://www.growwzastudios.in/sitemap.xml

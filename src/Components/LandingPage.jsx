@@ -290,7 +290,7 @@ const LandingPage = () => {
                   <div style={{ width: '40px', height: '40px', borderRadius: '10px', backgroundColor: colors.gold[400], display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <TrendingUp size={20} color="white" />
                   </div>
-                  <span style={{ fontSize: '0.8rem', fontWeight: '700', color: colors.stone[400] }}>LIVE METRICS</span>
+                  <span style={{ fontSize: '0.8rem', fontWeight: '700', color: colors.stone[400] }}></span>
                 </div>
 
                 <div style={{ textAlign: 'center', marginBottom: '32px' }}>
@@ -309,7 +309,7 @@ const LandingPage = () => {
                       <span style={{ fontSize: '1.5rem', fontWeight: '800', color: colors.stone[800] }}>92%</span>
                     </div>
                   </div>
-                  <h4 style={{ margin: '12px 0 4px', color: colors.stone[700] }}>Client Retention</h4>
+                  <h4 style={{ margin: '12px 0 4px', color: colors.stone[700] }}>Client Satisfaction</h4>
                   <p style={{ margin: 0, fontSize: '0.85rem', color: colors.stone[400] }}>Industry Leading Performance</p>
                 </div>
 
