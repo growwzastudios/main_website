@@ -248,7 +248,7 @@ const ProjectsPage = () => {
                   boxSizing: 'border-box',
                   boxShadow: 'none',
                   transition: 'border-color 0.2s, box-shadow 0.2s',
-                }}
+                }} 
                 onFocus={e => {
                   e.target.style.borderColor = colors.gold[400];
                   e.target.style.boxShadow = '0 0 0 3px rgba(201,178,139,0.15)';
