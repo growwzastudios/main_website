@@ -8,6 +8,7 @@ import PremiumServicesPage from './Components/Services'
 import PremiumContactPage from './Components/Contacts'
 import BlogPage from './Components/Blogs'
 import ScrollToTop from './Components/ScrollToTop'
+import ProjectsPage from './Components/Projects'
 function App() {
   
 
@@ -19,6 +20,7 @@ function App() {
 <Route path="/" element={<LandingPage />} />
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/services" element={<PremiumServicesPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/contact" element={<PremiumContactPage />} />
           <Route path="/blogs" element={<BlogPage/>} />
      </Routes>

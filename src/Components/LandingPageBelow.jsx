@@ -12,6 +12,7 @@ import {
   Cloud
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ALL_PROJECTS } from '../data/projects';
 
 const ServicesLanding = () => {
   // Custom color palette
@@ -294,41 +295,10 @@ const ServicesLanding = () => {
 ];
 
 
-  // Recent work data
-  const recentWork = [
-  {
-    title: "Zigi's Wine Bar",
-    category: "Web Development",
-    description: "A rooted bar in Australia which is established in 1980's",
-    image: "/showCase1.png", // Using placeholder for now
-    gradient: "linear-gradient(135deg, #c9b28b, #b9a282)",
-    link: "https://zigis.com.au/"
-  },
-  {
-    title: "Arts by Purvi Shah",
-    category: "Personal Portfolio",
-    description: "A one of it's kind handcrafted website for the artist",
-    image: "/showCase2.png", // Using placeholder for now
-    gradient: "linear-gradient(135deg, #b9a282, #a18d71)",
-    link: "https://www.artbypurvishah.com/"
-  },
-  {
-    title: "Wake Up Sports",
-    category: "Website development",
-    description: "Complete rebrand for international sports company",
-    image: "/showCase3.png", // Using placeholder for now
-    gradient: "linear-gradient(135deg, #a18d71, #8b7557)",
-    link: "https://www.wakeupuae.com/"
-  },
-  {
-    title: "Social Media Campaign for Tiara Store",
-    category: "Digital Marketing",
-    description: "Viral campaign reaching 2M+ engaged users",
-    image: "/showCase4.png", // Using placeholder for now
-    gradient: "linear-gradient(135deg, #dcc5a8, #c9b28b)",
-    link: ""
-  }
-];
+  // Recent work — top 4 by most recent date, automatically
+  const recentWork = [...ALL_PROJECTS]
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 4);
 
   return (
     <main style={{ 
@@ -603,127 +573,102 @@ const ServicesLanding = () => {
           >
             {recentWork.map((work, index) => (
               <motion.article
-  key={index}
-  variants={scaleIn}
-  whileHover={{ y: -10 }}
-  style={{
-    background: 'white',
-    borderRadius: '30px',
-    overflow: 'hidden',
-    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.08)',
-  }}
->
-  {/* Image Container with actual image tag */}
-  <div style={{
-    height: '200px',
-    background: work.gradient,
-    position: 'relative',
-    overflow: 'hidden',
-  }}>
-    {/* Use actual img tag instead of emoji */}
-    <img 
-      src={work.image} 
-      alt={work.title}
-      style={{
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-      }}
-      onError={(e) => {
-        // Fallback if image fails to load
-        e.target.style.display = 'none';
-        e.target.parentElement.style.background = work.gradient;
-      }}
-    />
-    
-    {/* Category badge */}
-    <motion.div
-      style={{
-        position: 'absolute',
-        top: '16px',
-        right: '16px',
-        background: 'rgba(255, 255, 255, 0.2)',
-        backdropFilter: 'blur(8px)',
-        padding: '4px 12px',
-        borderRadius: '20px',
-        color: 'white',
-        fontSize: '0.8rem',
-        fontWeight: '500',
-        zIndex: 2,
-      }}
-      whileHover={{ scale: 1.05 }}
-    >
-      {work.category}
-    </motion.div>
+                key={work.id || index}
+                variants={scaleIn}
+                whileHover={{ y: -10 }}
+                style={{
+                  background: 'white',
+                  borderRadius: '30px',
+                  overflow: 'hidden',
+                  boxShadow: '0 20px 40px rgba(0, 0, 0, 0.08)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
+                {/* Image banner */}
+                <div style={{
+                  height: '200px',
+                  background: work.gradient,
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}>
+                  <img
+                    src={work.image}
+                    alt={work.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    onError={e => {
+                      e.target.style.display = 'none';
+                      e.target.parentElement.style.background = work.gradient;
+                    }}
+                  />
 
-    {/* Optional: Add a clickable overlay for the link */}
-    {work.link && (
-      <motion.a
-        href={work.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: 'rgba(0, 0, 0, 0.5)',
-          color: 'white',
-          fontSize: '0.9rem',
-          fontWeight: '500',
-          textDecoration: 'none',
-          opacity: 0,
-          transition: 'opacity 0.3s ease',
-        }}
-        whileHover={{ opacity: 1 }}
-      >
-        View Project <ArrowRight size={16} style={{ marginLeft: '8px' }} />
-      </motion.a>
-    )}
-  </div>
-  
-  {/* Content */}
-  <div style={{ padding: '24px' }}>
-    <h3 style={{
-      fontSize: '1.2rem',
-      fontWeight: '500',
-      color: colors.stone[800],
-      marginBottom: '8px',
-    }}>
-      {work.title}
-    </h3>
-    <p style={{
-      fontSize: '0.95rem',
-      color: colors.stone[600],
-      lineHeight: '1.5',
-    }}>
-      {work.description}
-    </p>
-    
-    {/* Add view project link */}
-    {work.link && (
-      <motion.a
-        href={work.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '8px',
-          marginTop: '16px',
-          color: colors.gold[600],
-          textDecoration: 'none',
-          fontSize: '0.9rem',
-          fontWeight: '500',
-        }}
-        whileHover={{ x: 5 }}
-      >
-        Visit Website <ArrowRight size={14} />
-      </motion.a>
-    )}
-  </div>
-</motion.article>
+                  {/* Category badge — top right */}
+                  <div style={{
+                    position: 'absolute',
+                    top: '14px',
+                    right: '14px',
+                    background: 'rgba(255,255,255,0.2)',
+                    backdropFilter: 'blur(8px)',
+                    padding: '4px 12px',
+                    borderRadius: '20px',
+                    color: 'white',
+                    fontSize: '0.8rem',
+                    fontWeight: '500',
+                    zIndex: 2,
+                  }}>
+                    {work.category}
+                  </div>
+
+                  {/* Hover overlay */}
+                  {work.link && (
+                    <motion.a
+                      href={work.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                      style={{
+                        position: 'absolute', inset: 0,
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        background: 'rgba(0,0,0,0.5)', color: 'white',
+                        fontSize: '0.9rem', fontWeight: '500',
+                        textDecoration: 'none', gap: '8px',
+                      }}
+                    >
+                      View Project <ArrowRight size={16} />
+                    </motion.a>
+                  )}
+                </div>
+
+                {/* Card content */}
+                <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                  <h3 style={{
+                    fontSize: '1.2rem', fontWeight: '500',
+                    color: colors.stone[800], marginBottom: '8px',
+                  }}>
+                    {work.title}
+                  </h3>
+                  <p style={{
+                    fontSize: '0.95rem', color: colors.stone[600], lineHeight: '1.5', margin: 0,
+                  }}>
+                    {work.description}
+                  </p>
+
+                  {work.link && (
+                    <motion.a
+                      href={work.link} target="_blank" rel="noopener noreferrer"
+                      style={{
+                        display: 'inline-flex', alignItems: 'center', gap: '8px',
+                        marginTop: '16px', color: colors.gold[600],
+                        textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500',
+                      }}
+                      whileHover={{ x: 5 }}
+                    >
+                      Visit Website <ArrowRight size={14} />
+                    </motion.a>
+                  )}
+                </div>
+              </motion.article>
             ))}
           </motion.div>
 
@@ -733,25 +678,35 @@ const ServicesLanding = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            {/* <motion.button
-              style={{
-                padding: '16px 40px',
-                background: 'transparent',
-                border: `2px solid ${colors.gold[400]}`,
-                color: colors.gold[600],
-                borderRadius: '40px',
-                fontSize: '1rem',
-                fontWeight: '500',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-              }}
-              whileHover={{ scale: 1.05, background: colors.gold[400], color: 'white' }}
-              whileTap={{ scale: 0.95 }}
-            >
-              View All Projects <ChevronRight size={18} />
-            </motion.button> */}
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
+              <Link
+                to="/projects"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  padding: '14px 36px',
+                  background: 'transparent',
+                  border: `2px solid ${colors.gold[400]}`,
+                  color: colors.gold[600],
+                  borderRadius: '40px',
+                  fontSize: '1rem',
+                  fontWeight: '500',
+                  textDecoration: 'none',
+                  transition: 'all 0.25s ease',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.background = colors.gold[400];
+                  e.currentTarget.style.color = 'white';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.background = 'transparent';
+                  e.currentTarget.style.color = colors.gold[600];
+                }}
+              >
+                View All Projects <ChevronRight size={18} />
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
