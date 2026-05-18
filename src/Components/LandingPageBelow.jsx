@@ -306,9 +306,6 @@ const ServicesLanding = () => {
       fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
       overflow: 'hidden'
     }}>
-      {/* Add Inter font */}
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
       {/* Services Section (same as before) */}
       <section style={{ padding: '60px 20px', position: 'relative' }}>
         <motion.div
@@ -595,6 +592,11 @@ const ServicesLanding = () => {
                   <img
                     src={work.image}
                     alt={work.title}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    fetchPriority={index === 0 ? 'high' : 'low'}
+                    width="400"
+                    height="200"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     onError={e => {
                       e.target.style.display = 'none';

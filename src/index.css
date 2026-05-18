@@ -1,1 +1,49 @@
 @import "tailwindcss";
+
+/* ─── Performance & Image Loading Optimizations ─────────────────────── */
+
+/* Smooth scroll for the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Skeleton shimmer for images while loading */
+img {
+  /* Reserve space and prevent layout shifts */
+  background: linear-gradient(
+    90deg,
+    #f5f0e8 25%,
+    #e8d9c4 50%,
+    #f5f0e8 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  /* Smooth reveal once loaded */
+  transition: opacity 0.3s ease;
+}
+
+img[src] {
+  animation: none;
+  background: transparent;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Prevent layout shift when images load */
+img[width][height] {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+/* GPU-accelerate animated cards for smoother motion */
+article {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Prevent invisible FOUC flash before fonts load */
+body {
+  font-family: 'Inter', 'Poppins', system-ui, -apple-system, sans-serif;
+}

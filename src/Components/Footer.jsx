@@ -362,9 +362,6 @@ const Footer = () => {
 
   return (
     <footer style={styles.footer}>
-      {/* Add Inter font */}
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
       {/* Decorative top border */}
       <div style={{
         height: '4px',

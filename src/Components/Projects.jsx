@@ -71,6 +71,10 @@ const ProjectCard = ({ project }) => (
         <img
           src={project.image}
           alt={project.title}
+          loading="lazy"
+          decoding="async"
+          width="400"
+          height="200"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           onError={e => { e.target.style.display = 'none'; }}
         />
@@ -180,7 +184,6 @@ const ProjectsPage = () => {
       minHeight: '100vh',
       paddingTop: '80px',
     }}>
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
       {/* ── HERO HEADER ── */}
       <section style={{
