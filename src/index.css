@@ -63,29 +63,15 @@ body {
     -webkit-backdrop-filter: none !important;
   }
 
-  /* Reduce animation distance on mobile for smoother feel */
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-  }
-
-  /* Re-enable transitions (we only kill repeat/infinite keyframes above) */
-  .framer-motion-optimized {
-    animation-duration: unset !important;
-  }
-
   /* Ensure tap targets are large enough (reduces mis-taps → frustration) */
   button, a {
     min-height: 44px;
     min-width: 44px;
   }
-}
 
-/* GPU compositing for elements that animate — prevents layer promotion storms */
-@media (max-width: 767px) {
-  /* Only promote elements that ACTUALLY animate — not everything */
+  /* Only revert will-change on mobile — prevents unnecessary GPU layer promotion */
   article {
-    will-change: auto; /* Revert global will-change on mobile */
+    will-change: auto;
     transform: none;
   }
 }

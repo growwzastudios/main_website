@@ -1,9 +1,20 @@
 import { useMemo } from 'react'
 
 /**
- * Returns whether expensive animations are safe to run.
- * - Returns false on mobile screens (< 768px) or when user prefers reduced motion.
- * - Use this to gate infinite / blur / floating animations.
+ * Returns whether INFINITE/LOOPING animations are safe to run.
+ * 
+ * ✅ Always allowed (not gated by this hook):
+ *   - Entry animations (fadeIn, slideIn, scaleIn)
+ *   - Exit animations
+ *   - One-shot transitions
+ * 
+ * ❌ Only disabled on mobile via this hook:
+ *   - repeat: Infinity animations (blur orbs drifting, floating badges, pulse loops)
+ *   - Heavy filter: blur() animated elements
+ *   - Rotating/scaling orbs that run forever
+ * 
+ * Use as: const motionSafe = useMotionSafe()
+ * Then:   animate={motionSafe ? { y: [0,-15,0] } : {}}
  */
 export function useMotionSafe() {
   return useMemo(() => {
