@@ -13,8 +13,10 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ALL_PROJECTS } from '../data/projects';
+import { useMotionSafe } from '../hooks/useMotionSafe';
 
 const ServicesLanding = () => {
+  const motionSafe = useMotionSafe();
   // Custom color palette
   const colors = {
     beige: {
@@ -181,28 +183,24 @@ const ServicesLanding = () => {
   const staggerContainer = {
     animate: {
       transition: {
-        staggerChildren: 0.15
+        staggerChildren: motionSafe ? 0.15 : 0.06
       }
     }
   };
 
   const scaleIn = {
-    initial: { opacity: 0, scale: 0.9 },
+    initial: { opacity: 0, scale: motionSafe ? 0.9 : 0.97 },
     animate: { opacity: 1, scale: 1 },
-    transition: { duration: 0.5, ease: "easeOut" }
+    transition: { duration: motionSafe ? 0.5 : 0.25, ease: 'easeOut' }
   };
 
-  // Rest of the animation variants and services data (same as before)
-  const floatAnimation = {
+  // Float animation — desktop only
+  const floatAnimation = motionSafe ? {
     animate: {
       y: [-8, 8, -8],
-      transition: {
-        duration: 4,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
+      transition: { duration: 4, repeat: Infinity, ease: 'easeInOut' }
     }
-  };
+  } : { animate: {} };
 
   // Services data (same as before)
  const services = [

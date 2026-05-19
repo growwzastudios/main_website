@@ -47,3 +47,45 @@ article {
 body {
   font-family: 'Inter', 'Poppins', system-ui, -apple-system, sans-serif;
 }
+
+/* ─── Mobile-specific Performance ───────────────────────────────────────── */
+@media (max-width: 767px) {
+  /* Defer rendering of off-screen page sections — massive scroll perf win */
+  section {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 400px;
+  }
+
+  /* Disable expensive blur effects on mobile */
+  [style*="backdrop-filter"],
+  [style*="backdropFilter"] {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Reduce animation distance on mobile for smoother feel */
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  /* Re-enable transitions (we only kill repeat/infinite keyframes above) */
+  .framer-motion-optimized {
+    animation-duration: unset !important;
+  }
+
+  /* Ensure tap targets are large enough (reduces mis-taps → frustration) */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* GPU compositing for elements that animate — prevents layer promotion storms */
+@media (max-width: 767px) {
+  /* Only promote elements that ACTUALLY animate — not everything */
+  article {
+    will-change: auto; /* Revert global will-change on mobile */
+    transform: none;
+  }
+}

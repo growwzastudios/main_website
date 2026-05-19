@@ -15,10 +15,17 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -189,11 +196,11 @@ const Navbar = () => {
         </ul>
       </nav>
 
-      {/* Overlay for mobile */}
+      {/* Overlay for mobile — no backdrop-filter (expensive on mobile) */}
       {isMenuOpen && (
         <div
-          className="md:hidden fixed inset-0 backdrop-blur-sm z-40"
-          style={{ backgroundColor: `${colors.stone[900]}33` }}
+          className="md:hidden fixed inset-0 z-40"
+          style={{ backgroundColor: `${colors.stone[900]}55` }}
           onClick={() => setIsMenuOpen(false)}
           aria-hidden="true"
         />
