@@ -188,15 +188,15 @@ const ProjectsPage = () => {
       {/* ── HERO HEADER ── */}
       <section style={{
         padding: '60px 20px 40px',
-        background: `linear-gradient(135deg, ${colors.stone[800]} 0%, ${colors.stone[900]} 100%)`,
+        background: `linear-gradient(135deg, ${colors.beige[100]} 0%, ${colors.beige[50]} 100%)`,
         textAlign: 'center',
       }}>
         <motion.div initial="initial" animate="animate" variants={stagger}>
           <motion.span variants={fadeInUp} style={{
             display: 'inline-block',
-            background: `${colors.gold[400]}22`,
-            border: `1px solid ${colors.gold[400]}55`,
-            color: colors.gold[400],
+            background: colors.gold[100],
+            border: `1px solid ${colors.gold[200]}`,
+            color: colors.gold[700],
             padding: '6px 20px', borderRadius: '40px',
             fontSize: '0.85rem', fontWeight: 500, marginBottom: 20,
             letterSpacing: '0.05em',
@@ -205,14 +205,14 @@ const ProjectsPage = () => {
           </motion.span>
           <motion.h1 variants={fadeInUp} style={{
             fontSize: 'clamp(2rem, 6vw, 3.5rem)',
-            fontWeight: 300, color: 'white', margin: '0 0 16px',
+            fontWeight: 300, color: colors.stone[800], margin: '0 0 16px',
             lineHeight: 1.2,
           }}>
             Work We're&nbsp;
-            <span style={{ fontWeight: 600, color: colors.gold[400] }}>Proud Of</span>
+            <span style={{ fontWeight: 600, color: colors.gold[600] }}>Proud Of</span>
           </motion.h1>
           <motion.p variants={fadeInUp} style={{
-            fontSize: '1.05rem', color: colors.stone[400],
+            fontSize: '1.05rem', color: colors.stone[600],
             maxWidth: 600, margin: '0 auto',
           }}>
             Browse our projects, filter by service, and see how we've helped brands grow.
