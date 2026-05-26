@@ -101,4 +101,16 @@ export const ALL_PROJECTS = [
     isRecent: false,
     date: "2026-05",
   },
+  {
+    id: 9,
+    title: "Radiant Skin Clinic",
+    category: "Web Development",
+    services: ["Web Design & Development", "Social Media Management"],
+    description: "Website redesign and development for a growing skin clinic.",
+    image: "/showCase9.png",
+    gradient: "linear-gradient(135deg, #c9b28b, #dcc5a8)",
+    link: "https://radiantskinclinic.in/",
+    isRecent: true,
+    date: "2026-04",
+  },
 ];
