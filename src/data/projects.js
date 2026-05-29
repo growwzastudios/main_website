@@ -86,7 +86,7 @@ export const ALL_PROJECTS = [
     image: "/showCase5.png",
     gradient: "linear-gradient(135deg, #c9b28b, #dcc5a8)",
     link: "https://www.himanishbhattacharya.com/",
-    isRecent: false,
+    isRecent: true,
     date: "2026-05",
   },
   {
@@ -99,7 +99,7 @@ export const ALL_PROJECTS = [
     gradient: "linear-gradient(135deg, #c9b28b, #dcc5a8)",
     link: "",
     isRecent: false,
-    date: "2026-05",
+    date: "2026-01",
   },
   {
     id: 9,
@@ -112,5 +112,17 @@ export const ALL_PROJECTS = [
     link: "https://radiantskinclinic.in/",
     isRecent: true,
     date: "2026-04",
+  },
+  {
+    id: 10,
+    title: "Lotus Bites - Roasted Makhana",
+    category: "E-commerce Website",
+    services: ["Web Design & Development", "Social Media Management"],
+    description: "E-commerce website for Lotus Bites - Roasted Makhana.",
+    image: "/showCase10.png",
+    gradient: "linear-gradient(135deg, #c9b28b, #dcc5a8)",
+    link: "https://lotus-bites.vercel.app/index.html",
+    isRecent: true,
+    date: "2026-05",
   },
 ];
